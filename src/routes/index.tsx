@@ -6,8 +6,8 @@ import {
   ChevronDown,
 } from "lucide-react";
 
-import logoFull from "@/assets/batuqueria-logo-full.png.asset.json";
-import logoMark from "@/assets/batuqueria-mark.png.asset.json";
+import logoFull from "@/assets/batuqueria-logo-full-transparent.png.asset.json";
+import logoMark from "@/assets/batuqueria-mark-transparent.png.asset.json";
 import heroVideo from "@/assets/batuqueria-hero.mp4.asset.json";
 import heroPoster from "@/assets/hero.jpg";
 import g1 from "@/assets/gallery-1.jpg";
