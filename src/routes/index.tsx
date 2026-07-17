@@ -408,51 +408,326 @@ function Ticker() {
   );
 }
 
-/* ---------- Story timeline ---------- */
+/* ---------- Story — cinematic horizontal timeline ---------- */
 
-const TIMELINE = [
-  { year: "2000", title: "The First Beat", body: "Founder Paulo assembles a small crew of drummers in Belgium, driven by the sounds of Rio's blocos." },
-  { year: "2005", title: "Festival Stages", body: "The group starts touring Belgian and European summer festivals — sweat, sun and surdo." },
-  { year: "2010", title: "Zinneke Parade", body: "Batuqueria becomes a recurring heartbeat of Brussels' iconic Zinneke Parade." },
-  { year: "2014", title: "Red1 Joins", body: "Red1 steps in as co-leader, sharpening the arrangements and expanding the repertoire." },
-  { year: "2018", title: "Social Projects", body: "Workshops in schools and community centers turn percussion into a language of belonging." },
-  { year: "2025", title: "25 Years Strong", body: "A family of drummers, dancers and friends — still rehearsing every week, still moving crowds." },
+type Chapter = {
+  num: string;
+  year?: string;
+  title: string;
+  body: React.ReactNode;
+  render: () => React.ReactNode;
+};
+
+const MESTRES = [
+  { school: "Escola Vila Isabel", name: "Casiano & Pericles" },
+  { school: "Escola Portela", name: "Mestre Nilo" },
+  { school: "Monobloco", name: "Mestre Celso" },
 ];
 
-function Story() {
-  return (
-    <section id="story" className="relative py-32 px-6 overflow-hidden">
-      <div className="absolute -top-40 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-brand/20 blur-3xl" />
-      <div className="mx-auto max-w-6xl">
-        <SectionHeading eyebrow="Our Story" title={<>Twenty-five years<br />of one heartbeat.</>} />
+const DESTINATIONS = [
+  { flag: "🇧🇷", country: "Brazil", cities: ["Rio de Janeiro", "Salvador", "João Pessoa"], x: 32, y: 62 },
+  { flag: "🇨🇺", country: "Cuba", cities: ["Havana"], x: 24, y: 48 },
+  { flag: "🇨🇻", country: "Cape Verde", cities: ["São Vicente", "Sal", "Boa Vista"], x: 42, y: 52 },
+  { flag: "🇲🇶", country: "Martinique", cities: ["Fort-de-France"], x: 28, y: 55 },
+  { flag: "🇵🇹", country: "Portugal", cities: ["Sesimbra — MegaSamba Festival"], x: 46, y: 40 },
+  { flag: "🇲🇦", country: "Morocco", cities: ["Marrakech — Int'l Percussion Festival"], x: 49, y: 46 },
+];
+const BELGIUM = { x: 51, y: 36 };
 
-        <div className="relative mt-20">
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-brand to-transparent" />
-          <ul className="space-y-16">
-            {TIMELINE.map((item, i) => {
-              const left = i % 2 === 0;
+function Story() {
+  const wrapRef = useRef<HTMLDivElement | null>(null);
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const [progress, setProgress] = useState(0);
+
+  const chapters: Chapter[] = useMemo(() => [
+    {
+      num: "01",
+      year: "2002",
+      title: "The Beginning",
+      body: (
+        <>
+          After the Zinneke Parade in 2002, Paulo — already teaching Brazilian
+          percussion workshops — decided to create a group capable of sharing
+          the raw energy and spirit of Brazilian music.
+          <br /><br />
+          At that moment, <span className="text-brand">Red1 met Paulo</span>. A
+          friendship quickly grew from their shared passion for rhythm. Together
+          with a few other percussionists, they founded Batuqueria.
+        </>
+      ),
+      render: () => (
+        <div className="relative h-full w-full">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,oklch(0.55_0.22_27/0.35),transparent_60%)]" />
+          <div className="relative grid h-full grid-cols-12 gap-4 p-6 md:p-12">
+            <div className="col-span-7 relative overflow-hidden rounded-2xl border border-white/10 self-center h-[70%]"
+              style={{ transform: `translateY(${(0.5 - progress) * 20}px)` }}>
+              <img src={ch1a.url} alt="Batuqueria early years" className="h-full w-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            </div>
+            <div className="col-span-5 relative overflow-hidden rounded-2xl border border-white/10 self-end h-[55%] mb-8"
+              style={{ transform: `translateY(${(progress - 0.5) * 30}px)` }}>
+              <img src={ch1b.url} alt="Paulo in Morocco" className="h-full w-full object-cover" />
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      num: "02",
+      title: "The First Performances",
+      body: (
+        <>
+          Very quickly Batuqueria began performing across Belgium. The group
+          developed a reputation for explosive energy, powerful performances
+          and an unforgettable atmosphere.
+          <br /><br />
+          <span className="text-brand">Pili Pili Festival</span> — Liège<br />
+          <span className="text-brand">Sfinks Festival</span> — alongside Olodum &amp; Mangueira<br />
+          <span className="text-brand">Esperanzah! Festival</span>
+        </>
+      ),
+      render: () => (
+        <div className="relative h-full w-full p-6 md:p-12">
+          {[
+            { src: ch2a.url, r: -4, t: 8, l: 6, w: 44, h: 60 },
+            { src: ch2b.url, r: 3, t: 14, l: 42, w: 38, h: 55 },
+            { src: ch2c.url, r: -2, t: 42, l: 26, w: 42, h: 50 },
+          ].map((c, i) => (
+            <div
+              key={i}
+              className="absolute overflow-hidden rounded-2xl border border-white/15 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.9)]"
+              style={{
+                top: `${c.t}%`, left: `${c.l}%`, width: `${c.w}%`, height: `${c.h}%`,
+                transform: `rotate(${c.r + (progress - 0.5) * 4}deg) translateY(${(progress - 0.5) * (i - 1) * 40}px)`,
+                transition: "transform 100ms linear",
+              }}
+            >
+              <img src={c.src} alt="" className="h-full w-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+            </div>
+          ))}
+        </div>
+      ),
+    },
+    {
+      num: "03",
+      title: "Learning from Brazil",
+      body: (
+        <>
+          Driven by the desire to constantly grow, Batuqueria travelled to Brazil
+          to train with some of the country's greatest percussion masters —
+          and invited renowned Brazilian <span className="text-brand">Mestres</span> to
+          Brussels to share their knowledge.
+        </>
+      ),
+      render: () => (
+        <div className="relative h-full w-full p-6 md:p-12 flex items-center">
+          <div className="absolute inset-0 opacity-30">
+            <img src={ch3a.url} alt="" className="h-full w-full object-cover" />
+            <div className="absolute inset-0 bg-black/70" />
+          </div>
+          <div className="relative w-full">
+            <svg className="absolute inset-0 h-full w-full pointer-events-none" preserveAspectRatio="none" viewBox="0 0 100 100">
+              <line x1="50" y1="12" x2="16" y2="70" stroke="oklch(0.66 0.26 27 / 0.5)" strokeWidth="0.2" strokeDasharray="1 1" />
+              <line x1="50" y1="12" x2="50" y2="70" stroke="oklch(0.66 0.26 27 / 0.5)" strokeWidth="0.2" strokeDasharray="1 1" />
+              <line x1="50" y1="12" x2="84" y2="70" stroke="oklch(0.66 0.26 27 / 0.5)" strokeWidth="0.2" strokeDasharray="1 1" />
+            </svg>
+            <div className="relative mx-auto w-16 h-16 rounded-full border border-brand/60 grid place-items-center text-brand text-xs uppercase tracking-widest bg-black/60 backdrop-blur">
+              BQ
+            </div>
+            <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+              {MESTRES.map((m, i) => (
+                <div
+                  key={m.school}
+                  className="relative rounded-2xl border border-white/10 bg-black/60 backdrop-blur p-6 text-center"
+                  style={{
+                    transform: `translateY(${Math.max(0, 30 - progress * 60 + i * 8)}px)`,
+                    opacity: Math.min(1, Math.max(0, progress * 2 - 0.2 + i * 0.05)),
+                    transition: "transform 200ms linear, opacity 200ms linear",
+                  }}
+                >
+                  <div className="text-[10px] uppercase tracking-[0.4em] text-brand">{m.school}</div>
+                  <div className="mt-3 font-display text-2xl text-white">{m.name}</div>
+                  <div className="mt-4 mx-auto h-[1px] w-10 bg-brand/60" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      num: "04",
+      title: "Travelling the World",
+      body: (
+        <>
+          From Brussels to Bahia, from Havana to Marrakech — Batuqueria carries
+          the beat across continents. Every stage becomes home; every city
+          becomes family.
+        </>
+      ),
+      render: () => (
+        <div className="relative h-full w-full p-6 md:p-12">
+          <div className="relative h-full w-full rounded-2xl border border-white/10 overflow-hidden bg-[radial-gradient(circle_at_50%_50%,oklch(0.2_0.05_260),oklch(0.08_0.02_260))]">
+            {/* stylized dotted world backdrop */}
+            <svg className="absolute inset-0 h-full w-full opacity-40" viewBox="0 0 100 60" preserveAspectRatio="none">
+              {Array.from({ length: 30 }).map((_, r) =>
+                Array.from({ length: 60 }).map((_, c) => (
+                  <circle key={`${r}-${c}`} cx={c * 1.7 + 0.5} cy={r * 2 + 0.5} r="0.15" fill="oklch(0.7 0.03 260 / 0.35)" />
+                )),
+              )}
+            </svg>
+            {/* connection lines */}
+            <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+              {DESTINATIONS.map((d, i) => {
+                const shown = progress > 0.15 + i * 0.1;
+                return (
+                  <line
+                    key={d.country}
+                    x1={BELGIUM.x} y1={BELGIUM.y} x2={d.x} y2={d.y}
+                    stroke="oklch(0.66 0.26 27)" strokeWidth="0.15"
+                    strokeDasharray="1 1"
+                    style={{ opacity: shown ? 0.8 : 0, transition: "opacity 500ms" }}
+                  />
+                );
+              })}
+            </svg>
+            {/* Belgium origin */}
+            <div className="absolute h-3 w-3 rounded-full bg-white shadow-[0_0_20px_white]"
+              style={{ left: `${BELGIUM.x}%`, top: `${BELGIUM.y}%`, transform: "translate(-50%,-50%)" }} />
+            <div className="absolute text-[10px] uppercase tracking-widest text-white/70"
+              style={{ left: `${BELGIUM.x}%`, top: `${BELGIUM.y - 4}%`, transform: "translate(-50%,-100%)" }}>
+              Brussels
+            </div>
+            {/* destination pins */}
+            {DESTINATIONS.map((d, i) => {
+              const shown = progress > 0.15 + i * 0.1;
               return (
-                <TimelineItem key={item.year} item={item} left={left} />
+                <div key={d.country} className="absolute" style={{ left: `${d.x}%`, top: `${d.y}%`, transform: "translate(-50%,-50%)" }}>
+                  <span
+                    className="block h-2.5 w-2.5 rounded-full bg-brand"
+                    style={{
+                      boxShadow: shown ? "0 0 20px var(--brand-glow), 0 0 40px var(--brand-glow)" : "none",
+                      opacity: shown ? 1 : 0.3,
+                      transition: "all 500ms",
+                    }}
+                  />
+                  <div
+                    className="absolute left-4 top-1/2 -translate-y-1/2 whitespace-nowrap"
+                    style={{ opacity: shown ? 1 : 0, transition: "opacity 500ms" }}
+                  >
+                    <div className="text-[11px] font-semibold text-white">{d.flag} {d.country}</div>
+                    <div className="text-[9px] uppercase tracking-widest text-white/60">{d.cities.join(" · ")}</div>
+                  </div>
+                </div>
               );
             })}
-          </ul>
+            {/* floating photo cards */}
+            {[
+              { src: ch4a.url, t: 6, r: 4, rot: -3 },
+              { src: ch4b.url, t: 62, r: 6, rot: 4 },
+              { src: ch4c.url, t: 32, r: 2, rot: -2 },
+            ].map((c, i) => (
+              <div
+                key={i}
+                className="absolute w-40 h-28 md:w-52 md:h-36 rounded-lg border border-white/15 overflow-hidden shadow-[0_30px_60px_-20px_rgba(0,0,0,0.9)]"
+                style={{
+                  top: `${c.t}%`, right: `${c.r}%`,
+                  transform: `rotate(${c.rot}deg) translateY(${(progress - 0.5) * (i + 1) * 20}px)`,
+                  opacity: Math.min(1, progress * 2),
+                }}
+              >
+                <img src={c.src} alt="" className="h-full w-full object-cover" />
+              </div>
+            ))}
+          </div>
+        </div>
+      ),
+    },
+  ], [progress]);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const el = wrapRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const total = rect.height - window.innerHeight;
+      const p = Math.min(1, Math.max(0, -rect.top / total));
+      setProgress(p);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const count = chapters.length;
+  const activeIndex = Math.min(count - 1, Math.floor(progress * count * 0.999));
+
+  return (
+    <section id="story" ref={wrapRef} className="relative bg-black" style={{ height: `${count * 100}vh` }}>
+      <div ref={trackRef} className="sticky top-0 h-screen overflow-hidden">
+        {/* ambient glow */}
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-40 left-1/2 h-[60vmin] w-[60vmin] -translate-x-1/2 rounded-full bg-brand/20 blur-3xl" />
+          <div className="absolute bottom-0 right-0 h-[40vmin] w-[40vmin] rounded-full bg-brand/10 blur-3xl" />
+        </div>
+
+        {/* eyebrow */}
+        <div className="absolute top-6 md:top-10 left-6 md:left-12 z-20">
+          <div className="text-[10px] md:text-xs uppercase tracking-[0.5em] text-brand">Our Story</div>
+          <div className="mt-1 font-display text-lg md:text-2xl text-white/90">Twenty-five years, one heartbeat.</div>
+        </div>
+
+        {/* progress rail */}
+        <div className="absolute top-6 md:top-12 right-6 md:right-12 z-20 flex items-center gap-3">
+          {chapters.map((c, i) => (
+            <div key={c.num} className="flex items-center gap-2">
+              <span className={`text-[10px] tracking-widest ${i === activeIndex ? "text-brand" : "text-white/40"}`}>{c.num}</span>
+              <span className={`h-[2px] w-8 md:w-16 ${i === activeIndex ? "bg-brand" : "bg-white/20"} transition-colors`} />
+            </div>
+          ))}
+        </div>
+
+        {/* horizontal track */}
+        <div
+          className="absolute inset-0 flex"
+          style={{
+            width: `${count * 100}%`,
+            transform: `translateX(-${progress * (count - 1) * (100 / count)}%)`,
+            transition: "transform 120ms linear",
+          }}
+        >
+          {chapters.map((ch, i) => {
+            const local = Math.min(1, Math.max(0, progress * count - i));
+            return (
+              <div key={ch.num} className="relative shrink-0" style={{ width: `${100 / count}%`, height: "100vh" }}>
+                <div className="relative h-full w-full grid grid-cols-1 md:grid-cols-12 gap-0">
+                  {/* Left: text panel */}
+                  <div className="md:col-span-5 flex flex-col justify-center px-6 md:px-14 pt-24 pb-10 relative z-10">
+                    <div
+                      style={{
+                        opacity: Math.min(1, local * 1.6),
+                        transform: `translateY(${Math.max(0, 30 - local * 60)}px)`,
+                        transition: "opacity 300ms, transform 300ms",
+                      }}
+                    >
+                      <div className="text-brand font-display text-6xl md:text-8xl leading-none">{ch.num}</div>
+                      {ch.year && <div className="mt-2 text-white/50 text-sm uppercase tracking-[0.4em]">{ch.year}</div>}
+                      <h3 className="mt-6 font-display text-3xl md:text-5xl text-white leading-tight">{ch.title}</h3>
+                      <p className="mt-6 text-white/70 leading-relaxed max-w-md">{ch.body}</p>
+                    </div>
+                  </div>
+                  {/* Right: visual panel */}
+                  <div className="md:col-span-7 relative h-[60vh] md:h-screen">
+                    {ch.render()}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
-  );
-}
-
-function TimelineItem({ item, left }: { item: typeof TIMELINE[number]; left: boolean }) {
-  const ref = useReveal<HTMLLIElement>();
-  return (
-    <li ref={ref} className={`reveal relative md:grid md:grid-cols-2 md:gap-16 items-center`}>
-      <div className={`pl-12 md:pl-0 ${left ? "md:pr-16 md:text-right" : "md:col-start-2 md:pl-16"}`}>
-        <div className="inline-block font-display text-5xl md:text-7xl text-brand leading-none">{item.year}</div>
-        <h3 className="mt-3 text-2xl md:text-3xl text-white">{item.title}</h3>
-        <p className="mt-3 text-white/70 leading-relaxed max-w-md md:max-w-none">{item.body}</p>
-      </div>
-      <span className="absolute left-4 md:left-1/2 top-2 -translate-x-1/2 h-4 w-4 rounded-full bg-brand shadow-[0_0_20px_var(--brand-glow)]" />
-    </li>
   );
 }
 
