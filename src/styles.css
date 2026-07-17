@@ -109,6 +109,44 @@
   0% { transform: translate(0,0); }
   100% { transform: translate(-40px,-30px); }
 }
+@keyframes logoFloat {
+  0%,100% { transform: translateY(0) rotate(-1.2deg) scale(1); }
+  50%     { transform: translateY(-14px) rotate(1.2deg) scale(1.03); }
+}
+@keyframes logoGlow {
+  0%,100% { opacity: 0.55; transform: translate(-50%,-50%) scale(1); }
+  50%     { opacity: 0.9;  transform: translate(-50%,-50%) scale(1.15); }
+}
+@keyframes shockwave {
+  0%   { transform: translate(-50%,-50%) scale(0.2); opacity: 0.9; }
+  100% { transform: translate(-50%,-50%) scale(6);   opacity: 0; }
+}
+@keyframes introGlow {
+  0%   { opacity: 0; transform: translate(-50%,-50%) scale(0.4); }
+  100% { opacity: 0.7; transform: translate(-50%,-50%) scale(1); }
+}
+@keyframes markPop {
+  0%   { opacity: 0; transform: scale(0.2); filter: blur(20px); }
+  60%  { opacity: 1; transform: scale(1.08); filter: blur(0); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes markSlideRotate {
+  0%   { opacity: 0; transform: translateY(30px) rotate(-8deg); }
+  100% { opacity: 1; transform: translateY(0) rotate(0); }
+}
+@keyframes introFadeOut {
+  0%   { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+@keyframes particleFloat {
+  0%   { transform: translateY(0) translateX(0); opacity: 0; }
+  20%  { opacity: 1; }
+  100% { transform: translateY(-200px) translateX(var(--px,20px)); opacity: 0; }
+}
+@keyframes titleRise {
+  0%   { opacity: 0; transform: translateY(40px); filter: blur(10px); }
+  100% { opacity: 1; transform: translateY(0);    filter: blur(0); }
+}
 
 @utility animate-breathe { animation: breathe 4.5s ease-in-out infinite; }
 @utility animate-pulse-ring { animation: pulseRing 2.6s ease-out infinite; }
@@ -116,6 +154,8 @@
 @utility animate-float-y { animation: floatY 6s ease-in-out infinite; }
 @utility animate-rise-in { animation: riseIn 0.8s cubic-bezier(.2,.7,.2,1) both; }
 @utility animate-scroll-hint { animation: scrollHint 2s ease-in-out infinite; }
+@utility animate-logo-float { animation: logoFloat 7s ease-in-out infinite; }
+@utility animate-logo-glow  { animation: logoGlow 5s ease-in-out infinite; }
 
 @utility text-outline {
   -webkit-text-stroke: 1px oklch(1 0 0 / 0.85);
@@ -126,3 +166,4 @@
   background-image: radial-gradient(oklch(1 0 0 / 0.04) 1px, transparent 1px);
   background-size: 3px 3px;
 }
+
