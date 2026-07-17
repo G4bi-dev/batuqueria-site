@@ -750,7 +750,7 @@ const DNA = [
   { title: "Rehearsals", body: "Weekly sessions where sweat, laughter and grooves meet.", img: g3 },
   { title: "Festivals", body: "From tiny village squares to main stages, the beat travels with us.", img: g4 },
   { title: "BBQs & Family", body: "Half of Batuqueria happens around a grill after rehearsal.", img: g6 },
-  { title: "Friendship", body: "25 years of shared trips, shared drinks, shared silences.", img: g2 },
+  { title: "Friendship", body: "24 years of shared trips, shared drinks, shared silences.", img: g2 },
 ];
 
 function DNASection() {
