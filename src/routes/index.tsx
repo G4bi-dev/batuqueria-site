@@ -581,7 +581,7 @@ function PerfCard({ p, delay }: { p: typeof PERFS[number]; delay: number }) {
 
 const NUMS = [
   { value: 25, suffix: "+", label: "Years" },
-  { value: 600, suffix: "+", label: "Performances" },
+  { value: 1000, suffix: "+", label: "Performances" },
   { value: 250, suffix: "K", label: "People Entertained" },
   { value: 1, suffix: "", label: "Family" },
 ];
@@ -764,8 +764,8 @@ function Contact() {
         />
         <div className="mt-16 grid md:grid-cols-5 gap-10">
           <div className="md:col-span-2 space-y-6">
-            <InfoRow icon={Mail} label="Email" value="hello@batuqueria.be" />
-            <InfoRow icon={Phone} label="Phone" value="+32 470 00 00 00" />
+            <InfoRow icon={Mail} label="Email" value="infobatuqueria@gmail.com" />
+            <InfoRow icon={Phone} label="Phone" value={"+32 492 91 01 67 (FR / EN)\u00a0\n+32 477 13 11 35 (PT / ES)\n"} />
             <InfoRow icon={MapPin} label="Based in" value="Brussels, Belgium" />
             <div className="pt-6 flex gap-3">
               {[Instagram, Facebook, Youtube].map((I, i) => (
@@ -809,7 +809,7 @@ function InfoRow({ icon: Icon, label, value }: { icon: typeof Mail; label: strin
       </div>
       <div>
         <div className="text-xs uppercase tracking-widest text-white/50">{label}</div>
-        <div className="text-white text-lg">{value}</div>
+        <div className="text-white text-lg whitespace-pre-wrap">{value}</div>
       </div>
     </div>
   );
