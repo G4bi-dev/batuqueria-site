@@ -843,7 +843,7 @@ function PerfCard({ p, delay }: { p: typeof PERFS[number]; delay: number }) {
 /* ---------- Numbers ---------- */
 
 const NUMS = [
-  { value: 25, suffix: "+", label: "Years" },
+  { value: 24, suffix: "+", label: "Years" },
   { value: 1000, suffix: "+", label: "Performances" },
   { value: 250, suffix: "K", label: "People Entertained" },
   { value: 1, suffix: "", label: "Family" },
