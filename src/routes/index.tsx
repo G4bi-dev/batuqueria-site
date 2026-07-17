@@ -331,7 +331,7 @@ function Hero({ ready }: { ready: boolean }) {
               animation: ready ? "titleRise 1100ms cubic-bezier(.2,.7,.2,1) 500ms forwards" : "none",
             }}
           >
-            25 Years of <span className="text-brand">Energy.</span>
+            24 Years of <span className="text-brand">Energy.</span>
           </span>
           <span
             className="block text-outline"
@@ -351,7 +351,7 @@ function Hero({ ready }: { ready: boolean }) {
             animation: ready ? "titleRise 1000ms cubic-bezier(.2,.7,.2,1) 2200ms forwards" : "none",
           }}
         >
-          For more than 25 years, Batuqueria has brought the raw energy of Brazilian
+          For more than 24 years, Batuqueria has brought the raw energy of Brazilian
           percussion to festivals, private events, team buildings, social projects and
           cultural parades across the world.
         </p>
@@ -675,7 +675,7 @@ function Story() {
         {/* eyebrow */}
         <div className="absolute top-6 md:top-10 left-6 md:left-12 z-20">
           <div className="text-[10px] md:text-xs uppercase tracking-[0.5em] text-brand">Our Story</div>
-          <div className="mt-1 font-display text-lg md:text-2xl text-white/90">Twenty-five years, one heartbeat.</div>
+          <div className="mt-1 font-display text-lg md:text-2xl text-white/90">24 years, one heartbeat.</div>
         </div>
 
         {/* progress rail */}
@@ -750,7 +750,7 @@ const DNA = [
   { title: "Rehearsals", body: "Weekly sessions where sweat, laughter and grooves meet.", img: g3 },
   { title: "Festivals", body: "From tiny village squares to main stages, the beat travels with us.", img: g4 },
   { title: "BBQs & Family", body: "Half of Batuqueria happens around a grill after rehearsal.", img: g6 },
-  { title: "Friendship", body: "25 years of shared trips, shared drinks, shared silences.", img: g2 },
+  { title: "Friendship", body: "24 years of shared trips, shared drinks, shared silences.", img: g2 },
 ];
 
 function DNASection() {
@@ -843,7 +843,7 @@ function PerfCard({ p, delay }: { p: typeof PERFS[number]; delay: number }) {
 /* ---------- Numbers ---------- */
 
 const NUMS = [
-  { value: 25, suffix: "+", label: "Years" },
+  { value: 24, suffix: "+", label: "Years" },
   { value: 1000, suffix: "+", label: "Performances" },
   { value: 250, suffix: "K", label: "People Entertained" },
   { value: 1, suffix: "", label: "Family" },
