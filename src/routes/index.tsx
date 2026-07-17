@@ -849,11 +849,13 @@ function Footer() {
 
 function BatuqueriaHome() {
   const words = useMemo(() => revealStyle, []);
+  const [ready, setReady] = useState(false);
   return (
     <div className="relative bg-black text-white">
       <style>{words}</style>
+      <Intro onDone={() => setReady(true)} />
       <Nav />
-      <Hero />
+      <Hero ready={ready} />
       <Ticker />
       <Story />
       <DNASection />
