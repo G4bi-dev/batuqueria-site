@@ -157,9 +157,137 @@ function Nav() {
   );
 }
 
+/* ---------- Cinematic Intro ---------- */
+
+function Intro({ onDone }: { onDone: () => void }) {
+  const [phase, setPhase] = useState(0); // 0 black, 1 glow, 2 beat1, 3 beat2, 4 beat3, 5 gone
+  useEffect(() => {
+    const timers = [
+      setTimeout(() => setPhase(1), 350),   // glow appears
+      setTimeout(() => setPhase(2), 1100),  // BOOM 1 — diamond
+      setTimeout(() => setPhase(3), 1900),  // BOOM 2 — silhouette locks
+      setTimeout(() => setPhase(4), 2650),  // BOOM 3 — final flash
+      setTimeout(() => { setPhase(5); onDone(); }, 3300),
+    ];
+    return () => timers.forEach(clearTimeout);
+  }, [onDone]);
+
+  const particles = Array.from({ length: 24 });
+
+  return (
+    <div
+      className="fixed inset-0 z-[100] bg-black pointer-events-none"
+      style={{
+        opacity: phase >= 5 ? 0 : 1,
+        visibility: phase >= 5 ? "hidden" : "visible",
+        transition: "opacity 900ms cubic-bezier(.2,.7,.2,1), visibility 900ms",
+      }}
+      aria-hidden
+    >
+      {/* deep red radial glow */}
+      <div
+        className="absolute left-1/2 top-1/2 h-[80vmin] w-[80vmin] rounded-full"
+        style={{
+          background: "radial-gradient(circle, oklch(0.55 0.24 27 / 0.9) 0%, oklch(0.35 0.2 27 / 0.4) 35%, transparent 70%)",
+          transform: "translate(-50%,-50%)",
+          opacity: phase >= 1 ? (phase === 4 ? 1 : 0.7) : 0,
+          transition: "opacity 700ms ease-out",
+          filter: phase === 4 ? "brightness(1.6)" : "brightness(1)",
+        }}
+      />
+
+      {/* floating particles */}
+      {phase >= 1 && (
+        <div className="absolute inset-0 overflow-hidden">
+          {particles.map((_, i) => {
+            const left = (i * 37) % 100;
+            const delay = (i % 10) * 0.25;
+            const size = 2 + (i % 4);
+            const px = ((i * 13) % 60) - 30;
+            return (
+              <span
+                key={i}
+                className="absolute rounded-full bg-brand/70"
+                style={{
+                  left: `${left}%`,
+                  bottom: "30%",
+                  width: `${size}px`,
+                  height: `${size}px`,
+                  ["--px" as any]: `${px}px`,
+                  animation: `particleFloat ${4 + (i % 4)}s ease-out ${delay}s infinite`,
+                  filter: "blur(0.5px)",
+                }}
+              />
+            );
+          })}
+        </div>
+      )}
+
+      {/* shockwaves on each beat */}
+      {[2, 3, 4].map((p) =>
+        phase >= p ? (
+          <span
+            key={p}
+            className="absolute left-1/2 top-1/2 h-40 w-40 rounded-full border border-brand/70"
+            style={{
+              animation: "shockwave 1.4s cubic-bezier(.2,.7,.2,1) forwards",
+              animationDelay: "0ms",
+            }}
+          />
+        ) : null,
+      )}
+
+      {/* logo — appears on beat 1, silhouette detail on beat 2, final pulse beat 3 */}
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div
+          className="relative h-56 w-56 md:h-72 md:w-72"
+          style={{
+            opacity: phase >= 2 ? 1 : 0,
+            animation: phase >= 2 ? "markPop 900ms cubic-bezier(.2,.9,.2,1) both" : "none",
+          }}
+        >
+          <div
+            className="absolute inset-[-30%] rounded-full"
+            style={{
+              background: "radial-gradient(circle, oklch(0.66 0.26 27 / 0.55), transparent 65%)",
+              filter: "blur(20px)",
+            }}
+          />
+          <img
+            src={logoMark.url}
+            alt=""
+            className="relative h-full w-full object-contain"
+            style={{
+              animation:
+                phase >= 3
+                  ? "markSlideRotate 700ms cubic-bezier(.2,.7,.2,1) both"
+                  : "none",
+              filter:
+                phase === 4
+                  ? "drop-shadow(0 0 80px oklch(0.66 0.26 27 / 1))"
+                  : "drop-shadow(0 0 30px oklch(0.66 0.26 27 / 0.6))",
+              transition: "filter 500ms ease-out",
+            }}
+          />
+        </div>
+      </div>
+
+      {/* final cinematic flash */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: "radial-gradient(circle at center, oklch(0.7 0.26 27 / 0.6), transparent 60%)",
+          opacity: phase === 4 ? 1 : 0,
+          transition: "opacity 500ms ease-out",
+        }}
+      />
+    </div>
+  );
+}
+
 /* ---------- Hero ---------- */
 
-function Hero() {
+function Hero({ ready }: { ready: boolean }) {
   return (
     <section id="home" className="relative min-h-screen overflow-hidden">
       <video
@@ -175,32 +303,78 @@ function Hero() {
       <div className="absolute inset-0 bg-noise opacity-40" />
 
       <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center px-6 pt-24 text-center">
-        <div className="relative mb-8 group">
-          <div className="absolute inset-0 rounded-full bg-brand/40 blur-3xl animate-pulse-ring pointer-events-none" />
+        {/* Logo — transparent, floating, red glow, no container */}
+        <div className="relative mb-10 group">
+          {/* cinematic red radial light */}
+          <div
+            className="absolute left-1/2 top-1/2 h-[140%] w-[140%] rounded-full pointer-events-none animate-logo-glow"
+            style={{
+              background:
+                "radial-gradient(circle, oklch(0.66 0.26 27 / 0.55) 0%, oklch(0.55 0.24 27 / 0.25) 35%, transparent 70%)",
+              filter: "blur(30px)",
+              transform: "translate(-50%,-50%)",
+            }}
+          />
           <img
             src={logoMark.url}
-            alt="Batuqueria logo"
-            className="relative h-40 w-40 md:h-56 md:w-56 object-contain animate-breathe transition-transform duration-500 group-hover:scale-110"
+            alt="Batuqueria"
+            className="relative h-44 w-44 md:h-60 md:w-60 object-contain animate-logo-float transition-transform duration-700 group-hover:scale-110"
+            style={{
+              filter: "drop-shadow(0 0 40px oklch(0.66 0.26 27 / 0.55))",
+            }}
           />
         </div>
 
-        <p className="mb-4 text-xs md:text-sm uppercase tracking-[0.4em] text-brand">
+        <p
+          className="mb-4 text-xs md:text-sm uppercase tracking-[0.4em] text-brand"
+          style={{
+            opacity: 0,
+            animation: ready ? "titleRise 900ms cubic-bezier(.2,.7,.2,1) 200ms forwards" : "none",
+          }}
+        >
           Brazilian Percussion · Belgium · Since 2000
         </p>
 
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-display leading-[0.95] text-white">
-          25 Years of <span className="text-brand">Energy.</span>
-          <br />
-          <span className="text-outline">One Family.</span>
+          <span
+            className="block"
+            style={{
+              opacity: 0,
+              animation: ready ? "titleRise 1100ms cubic-bezier(.2,.7,.2,1) 500ms forwards" : "none",
+            }}
+          >
+            25 Years of <span className="text-brand">Energy.</span>
+          </span>
+          <span
+            className="block text-outline"
+            style={{
+              opacity: 0,
+              animation: ready ? "titleRise 1100ms cubic-bezier(.2,.7,.2,1) 1400ms forwards" : "none",
+            }}
+          >
+            One Family.
+          </span>
         </h1>
 
-        <p className="mt-6 max-w-2xl text-base md:text-lg text-white/80 leading-relaxed">
+        <p
+          className="mt-6 max-w-2xl text-base md:text-lg text-white/80 leading-relaxed"
+          style={{
+            opacity: 0,
+            animation: ready ? "titleRise 1000ms cubic-bezier(.2,.7,.2,1) 2200ms forwards" : "none",
+          }}
+        >
           For more than 25 years, Batuqueria has brought the raw energy of Brazilian
           percussion to festivals, private events, team buildings, social projects and
           cultural parades across the world.
         </p>
 
-        <div className="mt-10 flex flex-col sm:flex-row items-center gap-4">
+        <div
+          className="mt-10 flex flex-col sm:flex-row items-center gap-4"
+          style={{
+            opacity: 0,
+            animation: ready ? "titleRise 1000ms cubic-bezier(.2,.7,.2,1) 2600ms forwards" : "none",
+          }}
+        >
           <a
             href="#contact"
             className="group inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white shadow-[0_0_40px_-6px_var(--brand-glow)] hover:shadow-[0_0_80px_-2px_var(--brand-glow)] transition-all hover:-translate-y-0.5"
