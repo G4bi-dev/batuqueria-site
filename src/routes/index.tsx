@@ -16,6 +16,15 @@ import g3 from "@/assets/gallery-3.jpg";
 import g4 from "@/assets/gallery-4.jpg";
 import g5 from "@/assets/gallery-5.jpg";
 import g6 from "@/assets/gallery-6.jpg";
+import ch1a from "@/assets/story/ch1-a.jpg.asset.json";
+import ch1b from "@/assets/story/ch1-b.jpg.asset.json";
+import ch2a from "@/assets/story/ch2-a.jpg.asset.json";
+import ch2b from "@/assets/story/ch2-b.jpg.asset.json";
+import ch2c from "@/assets/story/ch2-c.jpg.asset.json";
+import ch3a from "@/assets/story/ch3-a.jpg.asset.json";
+import ch4a from "@/assets/story/ch4-a.jpg.asset.json";
+import ch4b from "@/assets/story/ch4-b.jpg.asset.json";
+import ch4c from "@/assets/story/ch4-c.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   component: BatuqueriaHome,
