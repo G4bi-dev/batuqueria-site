@@ -675,7 +675,7 @@ function Story() {
         {/* eyebrow */}
         <div className="absolute top-6 md:top-10 left-6 md:left-12 z-20">
           <div className="text-[10px] md:text-xs uppercase tracking-[0.5em] text-brand">Our Story</div>
-          <div className="mt-1 font-display text-lg md:text-2xl text-white/90">Twenty-five years, one heartbeat.</div>
+          <div className="mt-1 font-display text-lg md:text-2xl text-white/90">24 years, one heartbeat.</div>
         </div>
 
         {/* progress rail */}
