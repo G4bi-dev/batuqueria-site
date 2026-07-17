@@ -331,7 +331,7 @@ function Hero({ ready }: { ready: boolean }) {
               animation: ready ? "titleRise 1100ms cubic-bezier(.2,.7,.2,1) 500ms forwards" : "none",
             }}
           >
-            25 Years of <span className="text-brand">Energy.</span>
+            24 Years of <span className="text-brand">Energy.</span>
           </span>
           <span
             className="block text-outline"
@@ -351,7 +351,7 @@ function Hero({ ready }: { ready: boolean }) {
             animation: ready ? "titleRise 1000ms cubic-bezier(.2,.7,.2,1) 2200ms forwards" : "none",
           }}
         >
-          For more than 25 years, Batuqueria has brought the raw energy of Brazilian
+          For more than 24 years, Batuqueria has brought the raw energy of Brazilian
           percussion to festivals, private events, team buildings, social projects and
           cultural parades across the world.
         </p>
