@@ -1054,7 +1054,7 @@ function Contact() {
             </div>
             <div className="md:col-span-2 flex items-center justify-between">
               <p className="text-xs text-white/50">We usually reply within 48 hours.</p>
-              <button type="submit" className="inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white shadow-[0_0_40px_-6px_var(--brand-glow)] hover:shadow-[0_0_60px_-2px_var(--brand-glow)] transition-all">
+              <button type="submit" className="inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white shadow-[0_8px_24px_-10px_var(--brand-glow)] hover:shadow-[0_12px_32px_-8px_var(--brand-glow)] transition-all">
                 {sent ? "Thanks!" : "Send message"} <ArrowRight className="h-4 w-4" />
               </button>
             </div>
