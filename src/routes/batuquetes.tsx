@@ -94,7 +94,7 @@ function Nav() {
             </a>
           ))}
         </nav>
-        <a href="/#contact" className="hidden lg:inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-white shadow-[0_0_30px_-6px_var(--brand-glow)] hover:shadow-[0_0_50px_-2px_var(--brand-glow)] transition-shadow">
+        <a href="/#contact" className="hidden lg:inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-white shadow-[0_6px_18px_-8px_var(--brand-glow)] hover:shadow-[0_10px_24px_-6px_var(--brand-glow)] transition-shadow">
           Book Us <ArrowRight className="h-4 w-4" />
         </a>
         <button className="lg:hidden text-white p-2" onClick={() => setOpen(v => !v)} aria-label="Toggle menu">
@@ -154,7 +154,7 @@ function Hero() {
         </p>
 
         <div className={`mt-10 flex flex-wrap items-center justify-center gap-4 transition-all duration-1000 delay-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-          <a href="#contact" className="group inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white shadow-[0_0_40px_-4px_var(--brand-glow)] hover:shadow-[0_0_60px_-2px_var(--brand-glow)] transition-all hover:-translate-y-0.5">
+          <a href="#contact" className="group inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white shadow-[0_8px_24px_-10px_var(--brand-glow)] hover:shadow-[0_12px_32px_-8px_var(--brand-glow)] transition-all hover:-translate-y-0.5">
             Book a Performance <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </a>
           <a href="#gallery" className="inline-flex items-center gap-2 rounded-full border border-white/25 px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white hover:border-white/60 hover:bg-white/5 transition-all">
@@ -356,7 +356,7 @@ function Contact() {
           From intimate weddings to open-air festivals — the Batuqueria family is ready to make your moment unforgettable.
         </p>
         <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
-          <a href="/#contact" className="group inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white shadow-[0_0_40px_-4px_var(--brand-glow)] hover:shadow-[0_0_60px_-2px_var(--brand-glow)] transition-all hover:-translate-y-0.5">
+          <a href="/#contact" className="group inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white shadow-[0_8px_24px_-10px_var(--brand-glow)] hover:shadow-[0_12px_32px_-8px_var(--brand-glow)] transition-all hover:-translate-y-0.5">
             Book Batuqueria <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </a>
           <a href="/#contact" className="group inline-flex items-center gap-2 rounded-full border-2 border-[oklch(0.85_0.14_85)] bg-[oklch(0.85_0.14_85)]/5 px-8 py-4 text-sm font-semibold uppercase tracking-widest text-[oklch(0.9_0.12_85)] hover:bg-[oklch(0.85_0.14_85)]/15 transition-all hover:-translate-y-0.5">
