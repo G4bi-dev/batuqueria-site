@@ -99,6 +99,7 @@ const NAV = [
   { href: "#home", label: "Home" },
   { href: "#story", label: "Our Story" },
   { href: "#performances", label: "Performances" },
+  { href: "/batuquetes", label: "Batuquetes" },
   { href: "#gallery", label: "Gallery" },
   { href: "#agenda", label: "Agenda" },
   { href: "#join", label: "Join Us" },
