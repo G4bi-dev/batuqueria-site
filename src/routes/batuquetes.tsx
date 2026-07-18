@@ -356,7 +356,7 @@ function Contact() {
           From intimate weddings to open-air festivals — the Batuqueria family is ready to make your moment unforgettable.
         </p>
         <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
-          <a href="/#contact" className="group inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white shadow-[0_0_40px_-4px_var(--brand-glow)] hover:shadow-[0_0_60px_-2px_var(--brand-glow)] transition-all hover:-translate-y-0.5">
+          <a href="/#contact" className="group inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white shadow-[0_8px_24px_-10px_var(--brand-glow)] hover:shadow-[0_12px_32px_-8px_var(--brand-glow)] transition-all hover:-translate-y-0.5">
             Book Batuqueria <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </a>
           <a href="/#contact" className="group inline-flex items-center gap-2 rounded-full border-2 border-[oklch(0.85_0.14_85)] bg-[oklch(0.85_0.14_85)]/5 px-8 py-4 text-sm font-semibold uppercase tracking-widest text-[oklch(0.9_0.12_85)] hover:bg-[oklch(0.85_0.14_85)]/15 transition-all hover:-translate-y-0.5">
