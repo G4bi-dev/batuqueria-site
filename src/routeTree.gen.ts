@@ -9,8 +9,14 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as BatuquetesRouteImport } from './routes/batuquetes'
 import { Route as IndexRouteImport } from './routes/index'
 
+const BatuquetesRoute = BatuquetesRouteImport.update({
+  id: '/batuquetes',
+  path: '/batuquetes',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +25,39 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/batuquetes': typeof BatuquetesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/batuquetes': typeof BatuquetesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/batuquetes': typeof BatuquetesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/batuquetes'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/batuquetes'
+  id: '__root__' | '/' | '/batuquetes'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BatuquetesRoute: typeof BatuquetesRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/batuquetes': {
+      id: '/batuquetes'
+      path: '/batuquetes'
+      fullPath: '/batuquetes'
+      preLoaderRoute: typeof BatuquetesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +70,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BatuquetesRoute: BatuquetesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
