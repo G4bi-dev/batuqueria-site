@@ -366,7 +366,7 @@ function Hero({ ready }: { ready: boolean }) {
         >
           <a
             href="#contact"
-            className="group inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white shadow-[0_0_40px_-6px_var(--brand-glow)] hover:shadow-[0_0_80px_-2px_var(--brand-glow)] transition-all hover:-translate-y-0.5"
+            className="group inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white shadow-[0_8px_24px_-10px_var(--brand-glow)] hover:shadow-[0_12px_32px_-8px_var(--brand-glow)] transition-all hover:-translate-y-0.5"
           >
             Book Batuqueria <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </a>
