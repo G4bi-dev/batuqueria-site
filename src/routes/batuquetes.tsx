@@ -154,7 +154,7 @@ function Hero() {
         </p>
 
         <div className={`mt-10 flex flex-wrap items-center justify-center gap-4 transition-all duration-1000 delay-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-          <a href="#contact" className="group inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white shadow-[0_0_40px_-4px_var(--brand-glow)] hover:shadow-[0_0_60px_-2px_var(--brand-glow)] transition-all hover:-translate-y-0.5">
+          <a href="#contact" className="group inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white shadow-[0_8px_24px_-10px_var(--brand-glow)] hover:shadow-[0_12px_32px_-8px_var(--brand-glow)] transition-all hover:-translate-y-0.5">
             Book a Performance <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </a>
           <a href="#gallery" className="inline-flex items-center gap-2 rounded-full border border-white/25 px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white hover:border-white/60 hover:bg-white/5 transition-all">
