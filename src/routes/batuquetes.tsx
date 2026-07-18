@@ -94,7 +94,7 @@ function Nav() {
             </a>
           ))}
         </nav>
-        <a href="/#contact" className="hidden lg:inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-white shadow-[0_0_30px_-6px_var(--brand-glow)] hover:shadow-[0_0_50px_-2px_var(--brand-glow)] transition-shadow">
+        <a href="/#contact" className="hidden lg:inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-white shadow-[0_6px_18px_-8px_var(--brand-glow)] hover:shadow-[0_10px_24px_-6px_var(--brand-glow)] transition-shadow">
           Book Us <ArrowRight className="h-4 w-4" />
         </a>
         <button className="lg:hidden text-white p-2" onClick={() => setOpen(v => !v)} aria-label="Toggle menu">
