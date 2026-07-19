@@ -9,13 +9,16 @@ import {
 import logoFull from "@/assets/batuqueria-logo-full-transparent.png.asset.json";
 import logoMark from "@/assets/batuqueria-mark-transparent.png.asset.json";
 import heroVideo from "@/assets/batuqueria-hero.mp4.asset.json";
-import heroPoster from "@/assets/hero.jpg";
-import g1 from "@/assets/gallery-1.jpg";
-import g2 from "@/assets/gallery-2.jpg";
-import g3 from "@/assets/gallery-3.jpg";
-import g4 from "@/assets/gallery-4.jpg";
-import g5 from "@/assets/gallery-5.jpg";
-import g6 from "@/assets/gallery-6.jpg";
+import dna1 from "@/assets/dna/dna-1.jpg.asset.json";
+import dna2 from "@/assets/dna/dna-2.jpg.asset.json";
+import dna3 from "@/assets/dna/dna-3.jpg.asset.json";
+import dna4 from "@/assets/dna/dna-4.jpg.asset.json";
+import gal1 from "@/assets/gallery-new/gal-1.jpg.asset.json";
+import gal2 from "@/assets/gallery-new/gal-2.jpg.asset.json";
+import gal3 from "@/assets/gallery-new/gal-3.jpg.asset.json";
+import gal4 from "@/assets/gallery-new/gal-4.jpg.asset.json";
+import gal5 from "@/assets/gallery-new/gal-5.jpg.asset.json";
+import gal6 from "@/assets/gallery-new/gal-6.jpg.asset.json";
 import ch1a from "@/assets/story/ch1-a.jpg.asset.json";
 import ch1b from "@/assets/story/ch1-b.jpg.asset.json";
 import ch2a from "@/assets/story/ch2-a.jpg.asset.json";
@@ -25,6 +28,8 @@ import ch3a from "@/assets/story/ch3-a.jpg.asset.json";
 import ch4a from "@/assets/story/ch4-a.jpg.asset.json";
 import ch4b from "@/assets/story/ch4-b.jpg.asset.json";
 import ch4c from "@/assets/story/ch4-c.jpg.asset.json";
+
+const heroPoster = dna4.url;
 
 export const Route = createFileRoute("/")({
   component: BatuqueriaHome,
