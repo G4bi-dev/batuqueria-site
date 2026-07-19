@@ -9,13 +9,16 @@ import {
 import logoFull from "@/assets/batuqueria-logo-full-transparent.png.asset.json";
 import logoMark from "@/assets/batuqueria-mark-transparent.png.asset.json";
 import heroVideo from "@/assets/batuqueria-hero.mp4.asset.json";
-import heroPoster from "@/assets/hero.jpg";
-import g1 from "@/assets/gallery-1.jpg";
-import g2 from "@/assets/gallery-2.jpg";
-import g3 from "@/assets/gallery-3.jpg";
-import g4 from "@/assets/gallery-4.jpg";
-import g5 from "@/assets/gallery-5.jpg";
-import g6 from "@/assets/gallery-6.jpg";
+import dna1 from "@/assets/dna/dna-1.jpg.asset.json";
+import dna2 from "@/assets/dna/dna-2.jpg.asset.json";
+import dna3 from "@/assets/dna/dna-3.jpg.asset.json";
+import dna4 from "@/assets/dna/dna-4.jpg.asset.json";
+import gal1 from "@/assets/gallery-new/gal-1.jpg.asset.json";
+import gal2 from "@/assets/gallery-new/gal-2.jpg.asset.json";
+import gal3 from "@/assets/gallery-new/gal-3.jpg.asset.json";
+import gal4 from "@/assets/gallery-new/gal-4.jpg.asset.json";
+import gal5 from "@/assets/gallery-new/gal-5.jpg.asset.json";
+import gal6 from "@/assets/gallery-new/gal-6.jpg.asset.json";
 import ch1a from "@/assets/story/ch1-a.jpg.asset.json";
 import ch1b from "@/assets/story/ch1-b.jpg.asset.json";
 import ch2a from "@/assets/story/ch2-a.jpg.asset.json";
@@ -25,6 +28,8 @@ import ch3a from "@/assets/story/ch3-a.jpg.asset.json";
 import ch4a from "@/assets/story/ch4-a.jpg.asset.json";
 import ch4b from "@/assets/story/ch4-b.jpg.asset.json";
 import ch4c from "@/assets/story/ch4-c.jpg.asset.json";
+
+const heroPoster = dna4.url;
 
 export const Route = createFileRoute("/")({
   component: BatuqueriaHome,
@@ -176,7 +181,8 @@ function Intro({ onDone }: { onDone: () => void }) {
       setTimeout(() => setPhase(1), 250),   // ambient red glow
       setTimeout(() => setPhase(2), 900),   // diamond + silhouette settle
       setTimeout(() => setPhase(3), 1700),  // soft pulse ripple
-      setTimeout(() => { setPhase(4); onDone(); }, 2400),
+      setTimeout(() => setPhase(4), 2400),  // begin fade out
+      setTimeout(() => onDone(), 2800),     // reveal hero logo once intro is essentially gone
     ];
     return () => timers.forEach(clearTimeout);
   }, [onDone]);
@@ -190,7 +196,7 @@ function Intro({ onDone }: { onDone: () => void }) {
         background: "rgba(13,13,13,0.75)",
         opacity: phase >= 4 ? 0 : 1,
         visibility: phase >= 4 ? "hidden" : "visible",
-        transition: "opacity 1200ms cubic-bezier(.2,.7,.2,1), visibility 1200ms",
+        transition: "opacity 400ms cubic-bezier(.2,.7,.2,1), visibility 400ms",
       }}
       aria-hidden
     >
@@ -292,8 +298,16 @@ function Hero({ ready }: { ready: boolean }) {
       <div className="absolute inset-0 bg-noise opacity-40" />
 
       <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center px-6 pt-24 text-center">
-        {/* Logo — transparent, floating, red glow, no container */}
-        <div className="relative mb-10 group">
+        {/* Logo — hidden until intro finishes, then fades in */}
+        <div
+          className="relative mb-10 group"
+          style={{
+            opacity: ready ? 1 : 0,
+            visibility: ready ? "visible" : "hidden",
+            transition: "opacity 220ms ease-out",
+          }}
+          aria-hidden={!ready}
+        >
           {/* cinematic red radial light */}
           <div
             className="absolute left-1/2 top-1/2 h-[140%] w-[140%] rounded-full pointer-events-none animate-logo-glow"
@@ -313,6 +327,7 @@ function Hero({ ready }: { ready: boolean }) {
             }}
           />
         </div>
+
 
         <p
           className="mb-4 text-xs md:text-sm uppercase tracking-[0.4em] text-brand"
@@ -748,10 +763,10 @@ function SectionHeading({ eyebrow, title, sub, center = true }: { eyebrow: strin
 /* ---------- DNA ---------- */
 
 const DNA = [
-  { title: "Rehearsals", body: "Weekly sessions where sweat, laughter and grooves meet.", img: g3 },
-  { title: "Festivals", body: "From tiny village squares to main stages, the beat travels with us.", img: g4 },
-  { title: "BBQs & Family", body: "Half of Batuqueria happens around a grill after rehearsal.", img: g6 },
-  { title: "Friendship", body: "24 years of shared trips, shared drinks, shared silences.", img: g2 },
+  { title: "Rehearsals", body: "Weekly sessions where sweat, laughter and grooves meet.", img: dna1.url },
+  { title: "Festivals", body: "From tiny village squares to main stages, the beat travels with us.", img: dna2.url },
+  { title: "BBQs & Family", body: "Half of Batuqueria happens around a grill after rehearsal.", img: dna3.url },
+  { title: "Friendship", body: "24 years of shared trips, shared drinks, shared silences.", img: dna4.url },
 ];
 
 function DNASection() {
@@ -887,12 +902,12 @@ function Counter({ target, suffix, label, start }: { target: number; suffix: str
 /* ---------- Gallery ---------- */
 
 const GALLERY = [
-  { src: g1, span: "row-span-2" },
-  { src: g2, span: "" },
-  { src: g3, span: "" },
-  { src: g4, span: "row-span-2" },
-  { src: g5, span: "" },
-  { src: g6, span: "" },
+  { src: gal1.url, span: "row-span-2" },
+  { src: gal2.url, span: "" },
+  { src: gal3.url, span: "" },
+  { src: gal4.url, span: "row-span-2" },
+  { src: gal5.url, span: "" },
+  { src: gal6.url, span: "" },
 ];
 
 function Gallery() {
@@ -953,10 +968,10 @@ function GalleryTile({ src, span, onOpen }: { src: string; span: string; onOpen:
 /* ---------- Agenda ---------- */
 
 const AGENDA = [
-  { date: "May 24, 2026", city: "Brussels, BE", event: "Zinneke Parade", tag: "Parade" },
-  { date: "Jun 21, 2026", city: "Antwerp, BE", event: "Fête de la Musique", tag: "Festival" },
-  { date: "Jul 12, 2026", city: "Ghent, BE", event: "Gentse Feesten Opening", tag: "Festival" },
-  { date: "Aug 30, 2026", city: "Liège, BE", event: "Private Corporate Show", tag: "Private" },
+  { date: "Aug 2, 2026", city: "Beauraing, BE", event: "Braderie de Beauraing", tag: "Parade" },
+  { date: "Aug 7, 2026", city: "Huy, BE", event: "Foire de Huy", tag: "Festival" },
+  { date: "Aug 14, 2026", city: "Belgium", event: "Percusounds Festival", tag: "Festival" },
+  { date: "Aug 14, 2026", city: "Brussels, BE", event: "Brussels Dance Festival", tag: "Festival" },
 ];
 
 function Agenda() {
