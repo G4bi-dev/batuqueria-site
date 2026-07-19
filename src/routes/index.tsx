@@ -324,7 +324,7 @@ function Hero({ ready }: { ready: boolean }) {
           Brazilian Percussion · Belgium · Since 2000
         </p>
 
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-display leading-[0.95] text-white">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-display leading-[1.1] md:leading-[1.02] lg:leading-[1] text-white">
           <span
             className="block"
             style={{
