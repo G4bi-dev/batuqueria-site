@@ -183,7 +183,7 @@ function About() {
             <span className="h-px w-10 bg-[oklch(0.78_0.16_85)]" />
             <span className="text-[10px] uppercase tracking-[0.5em] text-[oklch(0.78_0.16_85)]">Who they are</span>
           </div>
-          <h2 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[0.95] text-white">
+          <h2 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[1.1] md:leading-[1.05] lg:leading-[1.02] text-white">
             The visual <span className="text-brand">heartbeat</span> of every performance.
           </h2>
           <div className="mt-10 space-y-6 text-white/75 text-lg leading-relaxed max-w-2xl">
