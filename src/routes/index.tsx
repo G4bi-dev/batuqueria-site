@@ -958,10 +958,10 @@ function GalleryTile({ src, span, onOpen }: { src: string; span: string; onOpen:
 /* ---------- Agenda ---------- */
 
 const AGENDA = [
-  { date: "May 24, 2026", city: "Brussels, BE", event: "Zinneke Parade", tag: "Parade" },
-  { date: "Jun 21, 2026", city: "Antwerp, BE", event: "Fête de la Musique", tag: "Festival" },
-  { date: "Jul 12, 2026", city: "Ghent, BE", event: "Gentse Feesten Opening", tag: "Festival" },
-  { date: "Aug 30, 2026", city: "Liège, BE", event: "Private Corporate Show", tag: "Private" },
+  { date: "Aug 2, 2026", city: "Beauraing, BE", event: "Braderie de Beauraing", tag: "Parade" },
+  { date: "Aug 7, 2026", city: "Huy, BE", event: "Foire de Huy", tag: "Festival" },
+  { date: "Aug 14, 2026", city: "Belgium", event: "Percusounds Festival", tag: "Festival" },
+  { date: "Aug 14, 2026", city: "Brussels, BE", event: "Brussels Dance Festival", tag: "Festival" },
 ];
 
 function Agenda() {
