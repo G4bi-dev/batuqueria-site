@@ -892,12 +892,12 @@ function Counter({ target, suffix, label, start }: { target: number; suffix: str
 /* ---------- Gallery ---------- */
 
 const GALLERY = [
-  { src: g1, span: "row-span-2" },
-  { src: g2, span: "" },
-  { src: g3, span: "" },
-  { src: g4, span: "row-span-2" },
-  { src: g5, span: "" },
-  { src: g6, span: "" },
+  { src: gal1.url, span: "row-span-2" },
+  { src: gal2.url, span: "" },
+  { src: gal3.url, span: "" },
+  { src: gal4.url, span: "row-span-2" },
+  { src: gal5.url, span: "" },
+  { src: gal6.url, span: "" },
 ];
 
 function Gallery() {
