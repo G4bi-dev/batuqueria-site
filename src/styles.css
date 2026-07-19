@@ -76,7 +76,9 @@
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
-  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: 0.01em; }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: 0.01em; line-height: 1.08; }
+  @media (min-width: 768px) { h1, h2, h3, h4 { line-height: 1.02; } }
+  @media (min-width: 1024px) { h1, h2, h3, h4 { line-height: 0.98; } }
   ::selection { background: var(--brand); color: white; }
 }
 

@@ -94,7 +94,7 @@ function Nav() {
             </a>
           ))}
         </nav>
-        <a href="/#contact" className="hidden lg:inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-white shadow-[0_6px_18px_-8px_var(--brand-glow)] hover:shadow-[0_10px_24px_-6px_var(--brand-glow)] transition-shadow">
+        <a href="/#contact" className="hidden lg:inline-flex isolate items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-white shadow-[0_6px_14px_-10px_var(--brand-glow)] hover:shadow-[0_8px_16px_-10px_var(--brand-glow)] transition-shadow">
           Book Us <ArrowRight className="h-4 w-4" />
         </a>
         <button className="lg:hidden text-white p-2" onClick={() => setOpen(v => !v)} aria-label="Toggle menu">
@@ -145,19 +145,19 @@ function Hero() {
           className={`pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] max-w-[80vw] opacity-[0.06] mix-blend-screen transition-opacity duration-[2000ms] ${mounted ? "opacity-[0.09]" : "opacity-0"}`}
         />
 
-        <h1 className={`font-display text-[18vw] md:text-[12vw] lg:text-[10vw] leading-[0.85] tracking-tight text-white transition-all duration-1000 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+        <h1 className={`font-display text-[18vw] md:text-[12vw] lg:text-[10vw] leading-[0.95] md:leading-[0.92] tracking-tight text-white transition-all duration-1000 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
           BATU<span className="text-brand">QUETES</span>
         </h1>
 
-        <p className={`mt-8 max-w-2xl text-lg md:text-xl text-white/85 font-light transition-all duration-1000 delay-500 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+        <p className={`mt-10 max-w-2xl text-lg md:text-xl text-white/85 font-light leading-relaxed transition-all duration-1000 delay-500 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
           More than dancers. <span className="text-white">They are the visual heartbeat of Batuqueria.</span>
         </p>
 
-        <div className={`mt-10 flex flex-wrap items-center justify-center gap-4 transition-all duration-1000 delay-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-          <a href="#contact" className="group inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white shadow-[0_8px_24px_-10px_var(--brand-glow)] hover:shadow-[0_12px_32px_-8px_var(--brand-glow)] transition-all hover:-translate-y-0.5">
+        <div className={`mt-12 flex flex-wrap items-center justify-center gap-5 sm:gap-6 transition-all duration-1000 delay-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+          <a href="#contact" className="group inline-flex isolate items-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white shadow-[0_10px_20px_-14px_var(--brand-glow)] hover:shadow-[0_14px_24px_-14px_var(--brand-glow)] transition-all hover:-translate-y-0.5">
             Book a Performance <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </a>
-          <a href="#gallery" className="inline-flex items-center gap-2 rounded-full border border-white/25 px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white hover:border-white/60 hover:bg-white/5 transition-all">
+          <a href="#gallery" className="inline-flex isolate items-center gap-2 rounded-full border border-white/25 px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white hover:border-white/60 hover:bg-white/5 transition-all">
             See the Gallery
           </a>
         </div>
@@ -183,7 +183,7 @@ function About() {
             <span className="h-px w-10 bg-[oklch(0.78_0.16_85)]" />
             <span className="text-[10px] uppercase tracking-[0.5em] text-[oklch(0.78_0.16_85)]">Who they are</span>
           </div>
-          <h2 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[0.95] text-white">
+          <h2 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[1.1] md:leading-[1.05] lg:leading-[1.02] text-white">
             The visual <span className="text-brand">heartbeat</span> of every performance.
           </h2>
           <div className="mt-10 space-y-6 text-white/75 text-lg leading-relaxed max-w-2xl">
@@ -293,7 +293,7 @@ function Performances() {
       <div className="mx-auto max-w-7xl">
         <div className="max-w-3xl mb-16">
           <div className="text-[10px] uppercase tracking-[0.5em] text-brand mb-4">Where they perform</div>
-          <h2 className="font-display text-5xl md:text-7xl text-white leading-[0.95]">
+          <h2 className="font-display text-5xl md:text-7xl text-white leading-[1.1] md:leading-[1.02]">
             Every stage. <br /><span className="text-outline">Every celebration.</span>
           </h2>
         </div>
@@ -347,19 +347,19 @@ function Contact() {
       </div>
       <div className={`relative mx-auto max-w-4xl text-center transition-all duration-1000 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
         <div className="text-[10px] uppercase tracking-[0.6em] text-[oklch(0.85_0.14_85)] mb-6">Booking</div>
-        <h2 className="font-display text-5xl md:text-7xl lg:text-8xl text-white leading-[0.95]">
+        <h2 className="font-display text-5xl md:text-7xl lg:text-8xl text-white leading-[1.1] md:leading-[1.05] lg:leading-[1.02]">
           Bring rhythm, <span className="text-brand">elegance</span> <br />
           and Brazilian energy <br />
           <span className="text-outline">to your event.</span>
         </h2>
-        <p className="mt-8 max-w-xl mx-auto text-white/70 text-lg">
+        <p className="mt-10 max-w-xl mx-auto text-white/70 text-lg leading-relaxed">
           From intimate weddings to open-air festivals — the Batuqueria family is ready to make your moment unforgettable.
         </p>
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
-          <a href="/#contact" className="group inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white shadow-[0_8px_24px_-10px_var(--brand-glow)] hover:shadow-[0_12px_32px_-8px_var(--brand-glow)] transition-all hover:-translate-y-0.5">
+        <div className="mt-14 flex flex-wrap items-center justify-center gap-5 sm:gap-6">
+          <a href="/#contact" className="group inline-flex isolate items-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white shadow-[0_10px_20px_-14px_var(--brand-glow)] hover:shadow-[0_14px_24px_-14px_var(--brand-glow)] transition-all hover:-translate-y-0.5">
             Book Batuqueria <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </a>
-          <a href="/#contact" className="group inline-flex items-center gap-2 rounded-full border-2 border-[oklch(0.85_0.14_85)] bg-[oklch(0.85_0.14_85)]/5 px-8 py-4 text-sm font-semibold uppercase tracking-widest text-[oklch(0.9_0.12_85)] hover:bg-[oklch(0.85_0.14_85)]/15 transition-all hover:-translate-y-0.5">
+          <a href="/#contact" className="group inline-flex isolate items-center gap-2 rounded-full border-2 border-[oklch(0.85_0.14_85)] bg-[oklch(0.85_0.14_85)]/5 px-8 py-4 text-sm font-semibold uppercase tracking-widest text-[oklch(0.9_0.12_85)] hover:bg-[oklch(0.85_0.14_85)]/15 transition-all hover:-translate-y-0.5">
             Book Batuquetes <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </a>
         </div>

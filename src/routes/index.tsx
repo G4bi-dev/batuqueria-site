@@ -135,7 +135,7 @@ function Nav() {
         </nav>
         <a
           href="#contact"
-          className="hidden lg:inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-white shadow-[0_6px_18px_-8px_var(--brand-glow)] hover:shadow-[0_10px_24px_-6px_var(--brand-glow)] transition-shadow"
+          className="hidden lg:inline-flex isolate items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-white shadow-[0_6px_14px_-10px_var(--brand-glow)] hover:shadow-[0_8px_16px_-10px_var(--brand-glow)] transition-shadow"
         >
           Book Us <ArrowRight className="h-4 w-4" />
         </a>
@@ -324,7 +324,7 @@ function Hero({ ready }: { ready: boolean }) {
           Brazilian Percussion · Belgium · Since 2000
         </p>
 
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-display leading-[0.95] text-white">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-display leading-[1.1] md:leading-[1.02] lg:leading-[1] text-white">
           <span
             className="block"
             style={{
@@ -358,7 +358,7 @@ function Hero({ ready }: { ready: boolean }) {
         </p>
 
         <div
-          className="mt-10 flex flex-col sm:flex-row items-center gap-4"
+          className="mt-12 flex flex-col sm:flex-row items-center gap-5 sm:gap-6"
           style={{
             opacity: 0,
             animation: ready ? "titleRise 1000ms cubic-bezier(.2,.7,.2,1) 2600ms forwards" : "none",
@@ -366,13 +366,13 @@ function Hero({ ready }: { ready: boolean }) {
         >
           <a
             href="#contact"
-            className="group inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white shadow-[0_8px_24px_-10px_var(--brand-glow)] hover:shadow-[0_12px_32px_-8px_var(--brand-glow)] transition-all hover:-translate-y-0.5"
+            className="group inline-flex isolate items-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white shadow-[0_10px_20px_-14px_var(--brand-glow)] hover:shadow-[0_14px_24px_-14px_var(--brand-glow)] transition-all hover:-translate-y-0.5"
           >
             Book Batuqueria <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </a>
           <a
             href="#story"
-            className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/5 px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white backdrop-blur hover:bg-white/10 transition-colors"
+            className="inline-flex isolate items-center gap-2 rounded-full border border-white/30 bg-white/5 px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white backdrop-blur hover:bg-white/10 transition-colors"
           >
             Discover Our Story
           </a>
@@ -1054,7 +1054,7 @@ function Contact() {
             </div>
             <div className="md:col-span-2 flex items-center justify-between">
               <p className="text-xs text-white/50">We usually reply within 48 hours.</p>
-              <button type="submit" className="inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white shadow-[0_8px_24px_-10px_var(--brand-glow)] hover:shadow-[0_12px_32px_-8px_var(--brand-glow)] transition-all">
+              <button type="submit" className="inline-flex isolate items-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white shadow-[0_10px_20px_-14px_var(--brand-glow)] hover:shadow-[0_14px_24px_-14px_var(--brand-glow)] transition-all">
                 {sent ? "Thanks!" : "Send message"} <ArrowRight className="h-4 w-4" />
               </button>
             </div>
