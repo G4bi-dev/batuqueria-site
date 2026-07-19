@@ -145,19 +145,19 @@ function Hero() {
           className={`pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] max-w-[80vw] opacity-[0.06] mix-blend-screen transition-opacity duration-[2000ms] ${mounted ? "opacity-[0.09]" : "opacity-0"}`}
         />
 
-        <h1 className={`font-display text-[18vw] md:text-[12vw] lg:text-[10vw] leading-[0.85] tracking-tight text-white transition-all duration-1000 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+        <h1 className={`font-display text-[18vw] md:text-[12vw] lg:text-[10vw] leading-[0.95] md:leading-[0.92] tracking-tight text-white transition-all duration-1000 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
           BATU<span className="text-brand">QUETES</span>
         </h1>
 
-        <p className={`mt-8 max-w-2xl text-lg md:text-xl text-white/85 font-light transition-all duration-1000 delay-500 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+        <p className={`mt-10 max-w-2xl text-lg md:text-xl text-white/85 font-light leading-relaxed transition-all duration-1000 delay-500 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
           More than dancers. <span className="text-white">They are the visual heartbeat of Batuqueria.</span>
         </p>
 
-        <div className={`mt-10 flex flex-wrap items-center justify-center gap-4 transition-all duration-1000 delay-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-          <a href="#contact" className="group inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white shadow-[0_8px_24px_-10px_var(--brand-glow)] hover:shadow-[0_12px_32px_-8px_var(--brand-glow)] transition-all hover:-translate-y-0.5">
+        <div className={`mt-12 flex flex-wrap items-center justify-center gap-5 sm:gap-6 transition-all duration-1000 delay-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+          <a href="#contact" className="group inline-flex isolate items-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white shadow-[0_10px_20px_-14px_var(--brand-glow)] hover:shadow-[0_14px_24px_-14px_var(--brand-glow)] transition-all hover:-translate-y-0.5">
             Book a Performance <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </a>
-          <a href="#gallery" className="inline-flex items-center gap-2 rounded-full border border-white/25 px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white hover:border-white/60 hover:bg-white/5 transition-all">
+          <a href="#gallery" className="inline-flex isolate items-center gap-2 rounded-full border border-white/25 px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white hover:border-white/60 hover:bg-white/5 transition-all">
             See the Gallery
           </a>
         </div>
