@@ -293,7 +293,7 @@ function Performances() {
       <div className="mx-auto max-w-7xl">
         <div className="max-w-3xl mb-16">
           <div className="text-[10px] uppercase tracking-[0.5em] text-brand mb-4">Where they perform</div>
-          <h2 className="font-display text-5xl md:text-7xl text-white leading-[0.95]">
+          <h2 className="font-display text-5xl md:text-7xl text-white leading-[1.1] md:leading-[1.02]">
             Every stage. <br /><span className="text-outline">Every celebration.</span>
           </h2>
         </div>
