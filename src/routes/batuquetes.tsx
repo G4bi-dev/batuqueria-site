@@ -347,19 +347,19 @@ function Contact() {
       </div>
       <div className={`relative mx-auto max-w-4xl text-center transition-all duration-1000 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
         <div className="text-[10px] uppercase tracking-[0.6em] text-[oklch(0.85_0.14_85)] mb-6">Booking</div>
-        <h2 className="font-display text-5xl md:text-7xl lg:text-8xl text-white leading-[0.95]">
+        <h2 className="font-display text-5xl md:text-7xl lg:text-8xl text-white leading-[1.1] md:leading-[1.05] lg:leading-[1.02]">
           Bring rhythm, <span className="text-brand">elegance</span> <br />
           and Brazilian energy <br />
           <span className="text-outline">to your event.</span>
         </h2>
-        <p className="mt-8 max-w-xl mx-auto text-white/70 text-lg">
+        <p className="mt-10 max-w-xl mx-auto text-white/70 text-lg leading-relaxed">
           From intimate weddings to open-air festivals — the Batuqueria family is ready to make your moment unforgettable.
         </p>
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
-          <a href="/#contact" className="group inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white shadow-[0_8px_24px_-10px_var(--brand-glow)] hover:shadow-[0_12px_32px_-8px_var(--brand-glow)] transition-all hover:-translate-y-0.5">
+        <div className="mt-14 flex flex-wrap items-center justify-center gap-5 sm:gap-6">
+          <a href="/#contact" className="group inline-flex isolate items-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white shadow-[0_10px_20px_-14px_var(--brand-glow)] hover:shadow-[0_14px_24px_-14px_var(--brand-glow)] transition-all hover:-translate-y-0.5">
             Book Batuqueria <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </a>
-          <a href="/#contact" className="group inline-flex items-center gap-2 rounded-full border-2 border-[oklch(0.85_0.14_85)] bg-[oklch(0.85_0.14_85)]/5 px-8 py-4 text-sm font-semibold uppercase tracking-widest text-[oklch(0.9_0.12_85)] hover:bg-[oklch(0.85_0.14_85)]/15 transition-all hover:-translate-y-0.5">
+          <a href="/#contact" className="group inline-flex isolate items-center gap-2 rounded-full border-2 border-[oklch(0.85_0.14_85)] bg-[oklch(0.85_0.14_85)]/5 px-8 py-4 text-sm font-semibold uppercase tracking-widest text-[oklch(0.9_0.12_85)] hover:bg-[oklch(0.85_0.14_85)]/15 transition-all hover:-translate-y-0.5">
             Book Batuquetes <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </a>
         </div>
