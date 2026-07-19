@@ -297,8 +297,16 @@ function Hero({ ready }: { ready: boolean }) {
       <div className="absolute inset-0 bg-noise opacity-40" />
 
       <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center px-6 pt-24 text-center">
-        {/* Logo — transparent, floating, red glow, no container */}
-        <div className="relative mb-10 group">
+        {/* Logo — hidden until intro finishes, then fades in */}
+        <div
+          className="relative mb-10 group"
+          style={{
+            opacity: ready ? 1 : 0,
+            visibility: ready ? "visible" : "hidden",
+            transition: "opacity 220ms ease-out",
+          }}
+          aria-hidden={!ready}
+        >
           {/* cinematic red radial light */}
           <div
             className="absolute left-1/2 top-1/2 h-[140%] w-[140%] rounded-full pointer-events-none animate-logo-glow"
@@ -318,6 +326,7 @@ function Hero({ ready }: { ready: boolean }) {
             }}
           />
         </div>
+
 
         <p
           className="mb-4 text-xs md:text-sm uppercase tracking-[0.4em] text-brand"
