@@ -753,10 +753,10 @@ function SectionHeading({ eyebrow, title, sub, center = true }: { eyebrow: strin
 /* ---------- DNA ---------- */
 
 const DNA = [
-  { title: "Rehearsals", body: "Weekly sessions where sweat, laughter and grooves meet.", img: g3 },
-  { title: "Festivals", body: "From tiny village squares to main stages, the beat travels with us.", img: g4 },
-  { title: "BBQs & Family", body: "Half of Batuqueria happens around a grill after rehearsal.", img: g6 },
-  { title: "Friendship", body: "24 years of shared trips, shared drinks, shared silences.", img: g2 },
+  { title: "Rehearsals", body: "Weekly sessions where sweat, laughter and grooves meet.", img: dna1.url },
+  { title: "Festivals", body: "From tiny village squares to main stages, the beat travels with us.", img: dna2.url },
+  { title: "BBQs & Family", body: "Half of Batuqueria happens around a grill after rehearsal.", img: dna3.url },
+  { title: "Friendship", body: "24 years of shared trips, shared drinks, shared silences.", img: dna4.url },
 ];
 
 function DNASection() {
