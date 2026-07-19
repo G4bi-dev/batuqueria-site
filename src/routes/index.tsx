@@ -181,7 +181,8 @@ function Intro({ onDone }: { onDone: () => void }) {
       setTimeout(() => setPhase(1), 250),   // ambient red glow
       setTimeout(() => setPhase(2), 900),   // diamond + silhouette settle
       setTimeout(() => setPhase(3), 1700),  // soft pulse ripple
-      setTimeout(() => { setPhase(4); onDone(); }, 2400),
+      setTimeout(() => setPhase(4), 2400),  // begin fade out
+      setTimeout(() => onDone(), 2800),     // reveal hero logo once intro is essentially gone
     ];
     return () => timers.forEach(clearTimeout);
   }, [onDone]);
@@ -195,7 +196,7 @@ function Intro({ onDone }: { onDone: () => void }) {
         background: "rgba(13,13,13,0.75)",
         opacity: phase >= 4 ? 0 : 1,
         visibility: phase >= 4 ? "hidden" : "visible",
-        transition: "opacity 1200ms cubic-bezier(.2,.7,.2,1), visibility 1200ms",
+        transition: "opacity 400ms cubic-bezier(.2,.7,.2,1), visibility 400ms",
       }}
       aria-hidden
     >
