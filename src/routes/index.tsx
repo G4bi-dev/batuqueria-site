@@ -417,6 +417,22 @@ function Ticker() {
 
 /* ---------- Story — simple, fluid vertical timeline ---------- */
 
+const MESTRES = [
+  { school: "Escola Vila Isabel", name: "Casiano & Pericles" },
+  { school: "Escola Portela", name: "Mestre Nilo" },
+  { school: "Monobloco", name: "Mestre Celso" },
+];
+
+const DESTINATIONS = [
+  { flag: "🇧🇷", country: "Brazil" },
+  { flag: "🇨🇺", country: "Cuba" },
+  { flag: "🇨🇻", country: "Cape Verde" },
+  { flag: "🇲🇶", country: "Martinique" },
+  { flag: "🇵🇹", country: "Portugal" },
+  { flag: "🇲🇦", country: "Morocco" },
+];
+
+
 type StoryChapter = {
   num: string;
   year?: string;
