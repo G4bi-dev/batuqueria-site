@@ -8,6 +8,7 @@ import dancerWhite from "@/assets/batuquetes/dancer-white.png.asset.json";
 import dancersWhiteRed from "@/assets/batuquetes/dancers-white-red.png.asset.json";
 import logoBatuquetes from "@/assets/batuquetes/logo-batuquetes.png.asset.json";
 import logoMark from "@/assets/batuqueria-mark-transparent.png.asset.json";
+import bombom from "@/assets/bombom.png.asset.json";
 
 export const Route = createFileRoute("/batuquetes")({
   head: () => ({
@@ -48,12 +49,83 @@ function BatuquetesPage() {
     <div className="min-h-screen bg-background text-foreground">
       <Nav />
       <Hero />
+      <Bombom />
       <About />
       <Gallery />
       <Performances />
       <Contact />
       <Footer />
     </div>
+  );
+}
+
+function useInViewOnce<T extends HTMLElement>() {
+  const ref = useRef<T | null>(null);
+  const [inView, setInView] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) { setInView(true); io.unobserve(e.target); }
+      },
+      { threshold: 0.2, rootMargin: "0px 0px -10% 0px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  return { ref, inView };
+}
+
+function Bombom() {
+  const { ref, inView } = useInViewOnce<HTMLDivElement>();
+  return (
+    <section className="relative py-32 px-6 overflow-hidden bg-gradient-to-b from-background via-[oklch(0.06_0_0)] to-background">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_30%,oklch(0.55_0.22_27/0.15),transparent_60%)]" />
+      <div
+        ref={ref}
+        className={`relative mx-auto max-w-6xl grid gap-12 md:gap-16 lg:grid-cols-12 items-center motion-safe:transition-all motion-safe:duration-[900ms] motion-safe:ease-out ${
+          inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}
+      >
+        <div className="lg:col-span-6 order-2 lg:order-1">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="text-2xl">👑</span>
+            <span className="text-[10px] uppercase tracking-[0.5em] text-[oklch(0.85_0.14_85)]">Meet Bombom</span>
+          </div>
+          <h2 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[1.05] text-white">
+            Queen of <span className="text-brand">Batuqueria</span>
+          </h2>
+          <div className="mt-4 h-[2px] w-20 bg-[oklch(0.85_0.14_85)]" />
+          <div className="mt-8 space-y-6 text-white/80 text-lg leading-relaxed max-w-xl">
+            <p>
+              As the <span className="text-white">Queen of Batuqueria</span>, she embodies the elegance,
+              strength and vibrant spirit of Brazilian dance.
+            </p>
+            <p>
+              Her charisma, energy and stage presence transform every performance into an
+              <span className="text-white"> unforgettable experience</span>.
+            </p>
+          </div>
+        </div>
+
+        <div className="lg:col-span-6 order-1 lg:order-2 relative">
+          <div className="relative aspect-[3/4] overflow-hidden rounded-sm shadow-[0_40px_80px_-30px_rgba(0,0,0,0.9)]">
+            <img src={bombom.url} alt="Bombom — Queen of Batuqueria" loading="lazy" className="h-full w-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+            <div className="absolute inset-0 ring-1 ring-inset ring-[oklch(0.85_0.14_85)]/30" />
+          </div>
+          <div className="absolute -top-4 -left-4 hidden md:flex items-center gap-2 rounded-full border border-[oklch(0.85_0.14_85)]/50 bg-black/70 backdrop-blur px-4 py-2">
+            <span className="text-sm">👑</span>
+            <span className="text-xs uppercase tracking-widest text-white/90">Queen</span>
+          </div>
+          <div className="absolute -bottom-4 -right-4 hidden md:block rounded-sm border border-white/10 bg-black/70 backdrop-blur px-5 py-3">
+            <div className="font-display text-2xl text-[oklch(0.85_0.14_85)]">Bombom</div>
+            <div className="text-[10px] uppercase tracking-widest text-white/60">Lead Dancer</div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
