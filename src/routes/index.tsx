@@ -3,7 +3,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import {
   Music2, Users, Sparkles, Building2, Heart, Radio, Landmark, PartyPopper,
   Instagram, Facebook, Youtube, Mail, MapPin, Phone, ArrowRight, Play, X,
-  ChevronDown,
+  
 } from "lucide-react";
 
 import logoFull from "@/assets/batuqueria-logo-full-transparent.png.asset.json";
