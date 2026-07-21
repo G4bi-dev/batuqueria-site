@@ -392,13 +392,6 @@ function Hero({ ready }: { ready: boolean }) {
         </div>
       </div>
 
-      <a href="#story" className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-white/70 hover:text-white">
-        <span className="text-[10px] uppercase tracking-[0.4em]">Scroll</span>
-        <div className="relative h-10 w-6 rounded-full border border-white/40">
-          <span className="absolute left-1/2 top-2 h-2 w-1 -translate-x-1/2 rounded-full bg-white animate-scroll-hint" />
-        </div>
-        <ChevronDown className="h-4 w-4 animate-float-y" />
-      </a>
     </section>
   );
 }
