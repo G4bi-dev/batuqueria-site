@@ -336,7 +336,7 @@ function Hero({ ready }: { ready: boolean }) {
             animation: ready ? "titleRise 900ms cubic-bezier(.2,.7,.2,1) 200ms forwards" : "none",
           }}
         >
-          Brazilian Percussion · Belgium · Since 2000
+          BRAZILIAN PERCUSSION · BELGIUM · SINCE 2002
         </p>
 
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-display leading-[1.1] md:leading-[1.02] lg:leading-[1] text-white">
@@ -361,15 +361,13 @@ function Hero({ ready }: { ready: boolean }) {
         </h1>
 
         <p
-          className="mt-6 max-w-2xl text-base md:text-lg text-white/80 leading-relaxed"
+          className="mt-6 max-w-2xl text-base md:text-lg text-white/80 leading-relaxed whitespace-pre-line"
           style={{
             opacity: 0,
             animation: ready ? "titleRise 1000ms cubic-bezier(.2,.7,.2,1) 2200ms forwards" : "none",
           }}
         >
-          For more than 24 years, Batuqueria has brought the raw energy of Brazilian
-          percussion to festivals, private events, team buildings, social projects and
-          cultural parades across the world.
+          {"\n"}
         </p>
 
         <div
@@ -578,8 +576,7 @@ function Story() {
       body: (
         <>
           From Brussels to Bahia, from Havana to Marrakech — Batuqueria carries
-          the beat across continents. Every stage becomes home; every city
-          becomes family.
+          the beat across continents.
         </>
       ),
       render: () => (
@@ -763,10 +760,10 @@ function SectionHeading({ eyebrow, title, sub, center = true }: { eyebrow: strin
 /* ---------- DNA ---------- */
 
 const DNA = [
-  { title: "Rehearsals", body: "Weekly sessions where sweat, laughter and grooves meet.", img: dna1.url },
-  { title: "Festivals", body: "From tiny village squares to main stages, the beat travels with us.", img: dna2.url },
-  { title: "BBQs & Family", body: "Half of Batuqueria happens around a grill after rehearsal.", img: dna3.url },
-  { title: "Friendship", body: "24 years of shared trips, shared drinks, shared silences.", img: dna4.url },
+  { title: "We Grow Together", body: "\n", img: dna1.url },
+  { title: "We Travel Together", body: "\n", img: dna2.url },
+  { title: "We Perform Together", body: "\n", img: dna3.url },
+  { title: "We Celebrate Together", body: "\n", img: dna4.url },
 ];
 
 function DNASection() {
@@ -776,7 +773,7 @@ function DNASection() {
         <SectionHeading
           eyebrow="Our DNA"
           title={<>More than a group. <span className="text-brand">A family.</span></>}
-          sub="Batuqueria isn't just percussion — it's rehearsals that end in dinners, festivals that become road trips, and friendships that outlast trends."
+          sub="For more than 24 years, Batuqueria has brought the raw energy of brazilian percussion across the world."
         />
         <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {DNA.map((d, i) => (
@@ -798,7 +795,7 @@ function DNACard({ d, delay }: { d: typeof DNA[number]; delay: number }) {
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 p-6">
         <h3 className="text-2xl text-white">{d.title}</h3>
-        <p className="mt-2 text-sm text-white/80 leading-relaxed">{d.body}</p>
+        <p className="mt-2 text-sm text-white/80 leading-relaxed whitespace-pre-line">{d.body}</p>
         <div className="mt-3 h-[2px] w-0 bg-brand transition-all duration-500 group-hover:w-16" />
       </div>
     </div>
@@ -825,7 +822,7 @@ function Performances() {
         <SectionHeading
           eyebrow="Performances"
           title={<>Where we bring <span className="text-brand">the beat.</span></>}
-          sub="Batuqueria adapts to every stage — from an intimate wedding aisle to a 20,000-strong festival crowd."
+          sub={<>Batuqueria adapts to every stage.{"\n"}From an intimate wedding aisle to a 20,000-strong festival crowd.{"\n"}</>}
         />
         <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {PERFS.map((p, i) => (
@@ -1015,7 +1012,7 @@ function Join() {
             center={false}
             eyebrow="Join Us"
             title={<>Feel the pull? <span className="text-brand">Come drum.</span></>}
-            sub="No experience needed. Just curiosity, rhythm in your feet, and a taste for a bigger family. Rehearsals every week in Brussels."
+            sub={<>{"\n"}</>}
           />
           <a href="#contact" className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-semibold uppercase tracking-widest text-black hover:bg-brand hover:text-white transition-colors">
             Try a rehearsal <ArrowRight className="h-4 w-4" />
@@ -1118,7 +1115,10 @@ function Footer() {
           <img src={logoMark.url} alt="" className="h-8 w-8 object-contain" />
           <span className="font-display text-lg tracking-widest text-white">BATUQUERIA</span>
         </div>
-        <p className="text-xs text-white/50">© {new Date().getFullYear()} Batuqueria — Made with rhythm in Belgium.</p>
+        <p className="text-xs text-white/50 whitespace-pre-line text-center md:text-right">
+          © {new Date().getFullYear()} Batuqueria — Made with rhythm in Belgium.{"\n"}
+          All rights reserved • Designed by Gabriela Rangel{"\n"}
+        </p>
       </div>
     </footer>
   );
