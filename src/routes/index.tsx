@@ -6,30 +6,31 @@ import {
   
 } from "lucide-react";
 
-import logoFull from "@/assets/batuqueria-logo-full-transparent.png.asset.json";
-import logoMark from "@/assets/batuqueria-mark-transparent.png.asset.json";
-import heroVideo from "@/assets/batuqueria-hero.mp4.asset.json";
-import dna1 from "@/assets/dna/dna-1.jpg.asset.json";
-import dna2 from "@/assets/dna/dna-2.jpg.asset.json";
-import dna3 from "@/assets/dna/dna-3.jpg.asset.json";
-import dna4 from "@/assets/dna/dna-4.jpg.asset.json";
-import gal1 from "@/assets/gallery-new/gal-1.jpg.asset.json";
-import gal2 from "@/assets/gallery-new/gal-2.jpg.asset.json";
-import gal3 from "@/assets/gallery-new/gal-3.jpg.asset.json";
-import gal4 from "@/assets/gallery-new/gal-4.jpg.asset.json";
-import gal5 from "@/assets/gallery-new/gal-5.jpg.asset.json";
-import gal6 from "@/assets/gallery-new/gal-6.jpg.asset.json";
-import ch1a from "@/assets/story/ch1-a.jpg.asset.json";
-import ch1b from "@/assets/story/ch1-b.jpg.asset.json";
-import ch2a from "@/assets/story/ch2-a.jpg.asset.json";
-import ch2b from "@/assets/story/ch2-b.jpg.asset.json";
-import ch2c from "@/assets/story/ch2-c.jpg.asset.json";
-import ch3a from "@/assets/story/ch3-a.jpg.asset.json";
-import ch4a from "@/assets/story/ch4-a.jpg.asset.json";
-import ch4b from "@/assets/story/ch4-b.jpg.asset.json";
-import ch4c from "@/assets/story/ch4-c.jpg.asset.json";
+const logoFull = { url: "/logo-batuqueria.png?v=20260727-1" };
+const logoMark = { url: "/logo-batuqueria.png?v=20260727-1" };
+const heroVideo = { url: "/videos/hero.mp4" };
+const hero = { url: "/images/hero/hero.jpg" };
+const dna1 = { url: "/images/dna/dna1.jpg" };
+const dna2 = { url: "/images/dna/dna2.jpg" };
+const dna3 = { url: "/images/dna/dna3.jpg" };
+const dna4 = { url: "/images/dna/dna4.jpg" };
+const gal1 = { url: "/images/gallery/photo1.jpg" };
+const gal2 = { url: "/images/gallery/photo2.jpg" };
+const gal3 = { url: "/images/gallery/photo3.jpg" };
+const gal4 = { url: "/images/gallery/photo4.jpg" };
+const gal5 = { url: "/images/gallery/photo5.jpg" };
+const gal6 = { url: "/images/gallery/photo6.jpg" };
+const ch1a = { url: "/images/story/chapter1-a.jpg" };
+const ch1b = { url: "/images/story/chapter1-b.jpg" };
+const ch2a = { url: "/images/story/chapter2-a.jpg" };
+const ch2b = { url: "/images/story/chapter2-b.jpg" };
+const ch2c = { url: "/images/story/chapter2-c.jpg" };
+const ch3a = { url: "/images/story/chapter3.jpg" };
+const ch4a = { url: "/images/story/chapter4-a.jpg" };
+const ch4b = { url: "/images/story/chapter4-b.jpg" };
+const ch4c = { url: "/images/story/chapter4-c.jpg" };
 
-const heroPoster = dna4.url;
+const heroPoster = hero.url;
 
 export const Route = createFileRoute("/")({
   component: BatuqueriaHome,
@@ -257,6 +258,7 @@ function Intro({ onDone }: { onDone: () => void }) {
             opacity: phase >= 2 ? 1 : 0,
             transform: phase >= 2 ? "scale(1)" : "scale(0.8)",
             transition: "opacity 900ms cubic-bezier(.2,.7,.2,1), transform 1100ms cubic-bezier(.2,.7,.2,1)",
+            background: "transparent",
           }}
         >
           <div
@@ -271,7 +273,9 @@ function Intro({ onDone }: { onDone: () => void }) {
             alt=""
             className="relative h-full w-full object-contain"
             style={{
-              filter: "drop-shadow(0 0 40px oklch(0.66 0.26 27 / 0.55))",
+              background: "transparent",
+              objectFit: "contain",
+              filter: "drop-shadow(0 0 40px rgba(255, 0, 0, 0.35))",
             }}
           />
         </div>
@@ -300,15 +304,15 @@ function Hero({ ready }: { ready: boolean }) {
       <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center px-6 pt-24 text-center">
         {/* Logo — hidden until intro finishes, then fades in */}
         <div
-          className="relative mb-10 group"
+          className="relative mb-10 flex items-center justify-center"
           style={{
             opacity: ready ? 1 : 0,
             visibility: ready ? "visible" : "hidden",
             transition: "opacity 220ms ease-out",
+            background: "transparent",
           }}
           aria-hidden={!ready}
         >
-          {/* cinematic red radial light */}
           <div
             className="absolute left-1/2 top-1/2 h-[140%] w-[140%] rounded-full pointer-events-none animate-logo-glow"
             style={{
@@ -323,7 +327,9 @@ function Hero({ ready }: { ready: boolean }) {
             alt="Batuqueria"
             className="relative h-44 w-44 md:h-60 md:w-60 object-contain animate-logo-float transition-transform duration-700 group-hover:scale-110"
             style={{
-              filter: "drop-shadow(0 0 40px oklch(0.66 0.26 27 / 0.55))",
+              background: "transparent",
+              objectFit: "contain",
+              filter: "drop-shadow(0 0 40px rgba(255, 0, 0, 0.35))",
             }}
           />
         </div>
@@ -899,7 +905,12 @@ function Join() {
           </a>
         </div>
         <div className="relative">
-          <img src={logoFull.url} alt="Batuqueria full logo" className="w-full max-w-md mx-auto animate-float-y drop-shadow-[0_0_40px_rgba(225,6,0,0.4)]" />
+          <img
+            src={logoFull.url}
+            alt="Batuqueria full logo"
+            className="mx-auto w-full max-w-md animate-float-y object-contain"
+            style={{ background: "transparent", filter: "drop-shadow(0 0 40px rgba(255, 0, 0, 0.35))" }}
+          />
         </div>
       </div>
     </section>

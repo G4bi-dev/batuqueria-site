@@ -1,14 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, X, Music, Building2, Heart, PartyPopper, Landmark, Flag, Users2 } from "lucide-react";
-import hero from "@/assets/batuquetes/hero.png.asset.json";
-import dancerRed from "@/assets/batuquetes/dancer-red.png.asset.json";
-import dancerPurple from "@/assets/batuquetes/dancer-purple.png.asset.json";
-import dancerWhite from "@/assets/batuquetes/dancer-white.png.asset.json";
-import dancersWhiteRed from "@/assets/batuquetes/dancers-white-red.png.asset.json";
-import logoBatuquetes from "@/assets/batuquetes/logo-batuquetes.png.asset.json";
-import logoMark from "@/assets/batuqueria-mark-transparent.png.asset.json";
-import bombom from "@/assets/bombom.png.asset.json";
+const hero = { url: "/images/batuquetes/hero.jpg" };
+const dancerRed = { url: "/images/batuquetes/danseuses1.jpg" };
+const dancerPurple = { url: "/images/batuquetes/danseuses2.jpg" };
+const dancerWhite = { url: "/images/batuquetes/danseuses1.jpg" };
+const dancersWhiteRed = { url: "/images/batuquetes/danseuses2.jpg" };
+const logoBatuquetes = { url: "/batuquetes-logo.png" };
+const logoMark = { url: "/batuquetes-logo.png" };
+const bombom = { url: "/images/batuquetes/reine-bombom.jpg" };
 
 export const Route = createFileRoute("/batuquetes")({
   head: () => ({
