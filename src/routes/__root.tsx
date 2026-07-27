@@ -71,7 +71,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Batuqueria — 25 Years of Brazilian Percussion in Belgium" },
+      { title: "Batuqueria" },
       { name: "description", content: "Batuqueria brings the raw energy of Brazilian percussion to festivals, private events, team buildings and cultural parades across Belgium and beyond. 25 years of rhythm, passion and family." },
       { property: "og:title", content: "Batuqueria — 25 Years of Brazilian Percussion" },
       { property: "og:description", content: "Festivals, weddings, team buildings, Zinneke Parade. Book the beat that has moved Belgium for 25 years." },
