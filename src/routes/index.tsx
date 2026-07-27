@@ -935,9 +935,19 @@ function Contact() {
             <InfoRow icon={Phone} label="Phone" value={"+32 492 91 01 67 (FR / EN)\u00a0\n+32 477 13 11 35 (PT / ES)\n"} />
             <InfoRow icon={MapPin} label="Based in" value="Brussels, Belgium" />
             <div className="pt-6 flex gap-3">
-              {[Instagram, Facebook, Youtube].map((I, i) => (
-                <a key={i} href="#" className="grid place-items-center h-11 w-11 rounded-full border border-white/20 text-white/80 hover:bg-brand hover:text-white hover:border-brand transition-colors">
-                  <I className="h-5 w-5" />
+              {[
+                { Icon: Instagram, href: "https://www.instagram.com/batuqueria/" },
+                { Icon: Facebook, href: "https://www.facebook.com/p/Batuqueria-100040097244060/?locale=fr_FR" },
+                { Icon: Youtube, href: "http://www.youtube.com/@batuqueriabruxelles377" },
+              ].map(({ Icon, href }, i) => (
+                <a
+                  key={i}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="grid place-items-center h-11 w-11 rounded-full border border-white/20 text-white/80 hover:bg-brand hover:text-white hover:border-brand transition-colors"
+                >
+                  <Icon className="h-5 w-5" />
                 </a>
               ))}
             </div>

@@ -2,10 +2,17 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, X, Music, Building2, Heart, PartyPopper, Landmark, Flag, Users2 } from "lucide-react";
 const hero = { url: "/images/batuquetes/hero.jpg" };
-const dancerRed = { url: "/images/batuquetes/danseuses1.jpg" };
-const dancerPurple = { url: "/images/batuquetes/danseuses2.jpg" };
-const dancerWhite = { url: "/images/batuquetes/danseuses1.jpg" };
-const dancersWhiteRed = { url: "/images/batuquetes/danseuses2.jpg" };
+const dancerPurple = { url: "/images/batuquetes/danseuses1.jpg" };
+const dancerRed = { url: "/images/batuquetes/danseuses2.jpg" };
+const dancerThree = { url: "/images/batuquetes/danseuses3.jpg" };
+const dancerFour = { url: "/images/batuquetes/danseuses4.jpg" };
+const dancerFive = { url: "/images/batuquetes/danseuses5.jpg" };
+const dancerSix = { url: "/images/batuquetes/danseuses6.jpg" };
+const dancerSeven = { url: "/images/batuquetes/danseuses7.jpg" };
+const dancerEight = { url: "/images/batuquetes/danseuses8.jpg" };
+const dancerNine = { url: "/images/batuquetes/danseuses9.jpg" };
+const dancerTen = { url: "/images/batuquetes/danseuses10.jpg" };
+const dancerEleven = { url: "/images/batuquetes/danseuses11.jpg" };
 const logoBatuquetes = { url: "/batuquetes-logo.png" };
 const logoMark = { url: "/batuquetes-logo.png" };
 const bombom = { url: "/images/batuquetes/reine-bombom.jpg" };
@@ -27,11 +34,17 @@ export const Route = createFileRoute("/batuquetes")({
 });
 
 const GALLERY = [
-  { src: hero.url, span: "md:col-span-2 md:row-span-2" },
+  { src: dancerPurple.url, span: "md:col-span-2 md:row-span-2" },
   { src: dancerRed.url, span: "" },
-  { src: dancerPurple.url, span: "md:row-span-2" },
-  { src: dancerWhite.url, span: "" },
-  { src: dancersWhiteRed.url, span: "md:col-span-2" },
+  { src: dancerThree.url, span: "md:row-span-2" },
+  { src: dancerFour.url, span: "" },
+  { src: dancerFive.url, span: "md:col-span-2" },
+  { src: dancerSix.url, span: "" },
+  { src: dancerSeven.url, span: "" },
+  { src: dancerEight.url, span: "" },
+  { src: dancerNine.url, span: "" },
+  { src: dancerTen.url, span: "" },
+  { src: dancerEleven.url, span: "" },
 ];
 
 const PERFORMANCES = [
@@ -414,7 +427,7 @@ function Contact() {
   return (
     <section id="contact" ref={ref} className="relative py-40 px-6 overflow-hidden">
       <div className="absolute inset-0">
-        <img src={dancersWhiteRed.url} alt="" className="h-full w-full object-cover opacity-30" />
+        <img src={dancerRed.url} alt="" className="h-full w-full object-cover opacity-30" />
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background" />
       </div>
       <div className={`relative mx-auto max-w-4xl text-center transition-all duration-1000 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
