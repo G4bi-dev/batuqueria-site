@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
+import { sendContactMessage } from "@/lib/contact.functions";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   Music2, Users, Sparkles, Building2, Heart, Radio, Landmark, PartyPopper,
@@ -920,7 +922,8 @@ function Join() {
 /* ---------- Contact ---------- */
 
 function Contact() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const sendFn = useServerFn(sendContactMessage);
   return (
     <section id="contact" className="relative py-32 px-6 bg-black">
       <div className="mx-auto max-w-6xl">
@@ -955,20 +958,47 @@ function Contact() {
 
           <form
             className="md:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-4"
-            onSubmit={(e) => { e.preventDefault(); setSent(true); }}
+            onSubmit={async (e) => {
+              e.preventDefault();
+              const form = e.currentTarget;
+              const fd = new FormData(form);
+              setStatus("sending");
+              try {
+                const r = await sendFn({
+                  data: {
+                    name: String(fd.get("name") ?? ""),
+                    email: String(fd.get("email") ?? ""),
+                    date: String(fd.get("date") ?? ""),
+                    type: String(fd.get("type") ?? ""),
+                    message: String(fd.get("message") ?? ""),
+                  },
+                });
+                if (r.ok) { setStatus("sent"); form.reset(); } else setStatus("error");
+              } catch { setStatus("error"); }
+            }}
           >
-            <Field label="Name" name="name" />
-            <Field label="Email" name="email" type="email" />
+            <Field label="Name" name="name" required />
+            <Field label="Email" name="email" type="email" required />
             <Field label="Event date" name="date" type="date" />
             <Field label="Event type" name="type" />
             <div className="md:col-span-2">
-              <label className="block text-xs uppercase tracking-widest text-white/60 mb-2">Tell us more</label>
-              <textarea rows={5} className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white placeholder:text-white/30 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/40 transition" />
+              <label htmlFor="message" className="block text-xs uppercase tracking-widest text-white/60 mb-2">Tell us more</label>
+              <textarea id="message" name="message" rows={5} maxLength={5000} className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white placeholder:text-white/30 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/40 transition" />
             </div>
+            {status === "sent" && (
+              <div role="status" className="md:col-span-2 rounded-xl border border-green-500/40 bg-green-500/10 px-4 py-3 text-sm text-green-300">
+                Your message has been sent successfully! We'll get back to you soon.
+              </div>
+            )}
+            {status === "error" && (
+              <div role="alert" className="md:col-span-2 rounded-xl border border-brand/50 bg-brand/10 px-4 py-3 text-sm text-white">
+                Sorry, your message could not be sent. Please try again or email us at infobatuqueria@gmail.com.
+              </div>
+            )}
             <div className="md:col-span-2 flex items-center justify-between">
               <p className="text-xs text-white/50">We usually reply within 48 hours.</p>
-              <button type="submit" className="inline-flex isolate items-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white shadow-[0_10px_20px_-14px_var(--brand-glow)] hover:shadow-[0_14px_24px_-14px_var(--brand-glow)] transition-all">
-                {sent ? "Thanks!" : "Send message"} <ArrowRight className="h-4 w-4" />
+              <button type="submit" disabled={status === "sending"} className="inline-flex isolate items-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white shadow-[0_10px_20px_-14px_var(--brand-glow)] hover:shadow-[0_14px_24px_-14px_var(--brand-glow)] transition-all disabled:opacity-60">
+                {status === "sending" ? "Sending..." : "Send message"} <ArrowRight className="h-4 w-4" />
               </button>
             </div>
           </form>
@@ -992,7 +1022,7 @@ function InfoRow({ icon: Icon, label, value }: { icon: typeof Mail; label: strin
   );
 }
 
-function Field({ label, name, type = "text" }: { label: string; name: string; type?: string }) {
+function Field({ label, name, type = "text", required }: { label: string; name: string; type?: string; required?: boolean }) {
   return (
     <div>
       <label htmlFor={name} className="block text-xs uppercase tracking-widest text-white/60 mb-2">{label}</label>
@@ -1000,6 +1030,7 @@ function Field({ label, name, type = "text" }: { label: string; name: string; ty
         id={name}
         name={name}
         type={type}
+        required={required}
         className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white placeholder:text-white/30 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/40 transition"
       />
     </div>
