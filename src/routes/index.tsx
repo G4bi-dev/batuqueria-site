@@ -935,7 +935,7 @@ function Contact() {
         <div className="mt-16 grid md:grid-cols-5 gap-10">
           <div className="md:col-span-2 space-y-6">
             <InfoRow icon={Mail} label="Email" value="infobatuqueria@gmail.com" />
-            <InfoRow icon={Phone} label="Phone" value={"+32 492 91 01 67 (FR / EN)\u00a0\n+32 477 13 11 35 (PT / ES)\n"} />
+            <InfoRow icon={Phone} label="Phone" value={"+32 492 91 01 67 (FR / EN)\u00a0\n+32 477 13 11 35 (PT / ES / FR)\n"} />
             <InfoRow icon={MapPin} label="Based in" value="Brussels, Belgium" />
             <div className="pt-6 flex gap-3">
               {[
